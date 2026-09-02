@@ -1,0 +1,1307 @@
+{
+ "page": 5,
+ "width": 1620,
+ "height": 2304,
+ "pt_w": 583.2000122070312,
+ "pt_h": 829.4400024414062,
+ "dpi": 200,
+ "elements": [
+  {
+   "type": "rect",
+   "bbox": [
+    805,
+    423,
+    1470,
+    841
+   ],
+   "fill": "#FFFFFF",
+   "line": "#B5B8B9",
+   "line_px": 5,
+   "rounded": true,
+   "id": "r0"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    129,
+    1394,
+    1466,
+    1456
+   ],
+   "fill": "#D1DDDF",
+   "id": "r1"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    128,
+    1595,
+    793,
+    1654
+   ],
+   "fill": "#D5E0E1",
+   "id": "r2"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    127,
+    1797,
+    792,
+    1855
+   ],
+   "fill": "#D6E1E3",
+   "id": "r3"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    801,
+    1600,
+    1465,
+    1657
+   ],
+   "fill": "#D1DEDF",
+   "id": "r4"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    800,
+    1802,
+    1464,
+    1858
+   ],
+   "fill": "#D2DDDE",
+   "id": "r5"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    130,
+    241,
+    300,
+    401
+   ],
+   "fill": "#118EC1",
+   "id": "r6"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    1161,
+    443,
+    1284,
+    539
+   ],
+   "fill": "#FFFFFF",
+   "line": "#8ACAE8",
+   "line_px": 4,
+   "rounded": false,
+   "id": "r7"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    1160,
+    604,
+    1283,
+    700
+   ],
+   "fill": "#FFFFFF",
+   "line": "#ABB3B3",
+   "line_px": 3,
+   "rounded": true,
+   "id": "r8"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    990,
+    603,
+    1112,
+    699
+   ],
+   "fill": "#FFFFFF",
+   "line": "#B7BDBE",
+   "line_px": 3,
+   "rounded": true,
+   "id": "r9"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    1332,
+    444,
+    1453,
+    540
+   ],
+   "fill": "#FFFFFF",
+   "line": "#93CDEB",
+   "line_px": 4,
+   "rounded": false,
+   "id": "r10"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    822,
+    602,
+    943,
+    698
+   ],
+   "fill": "#FFFFFF",
+   "line": "#B1B4B5",
+   "line_px": 3,
+   "rounded": true,
+   "id": "r11"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    1332,
+    604,
+    1452,
+    700
+   ],
+   "fill": "#FFFFFF",
+   "line": "#B7B9BA",
+   "line_px": 3,
+   "rounded": true,
+   "id": "r12"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    823,
+    442,
+    944,
+    537
+   ],
+   "fill": "#FFFFFF",
+   "line": "#90CFEC",
+   "line_px": 4,
+   "rounded": false,
+   "id": "r13"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    990,
+    438,
+    1113,
+    485
+   ],
+   "fill": "#73C1E5",
+   "id": "r14"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    129,
+    416,
+    308,
+    593
+   ],
+   "photo": true,
+   "id": "i0"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    1269,
+    45,
+    1481,
+    140
+   ],
+   "id": "i1"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    309,
+    417,
+    791,
+    431
+   ],
+   "id": "i2"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    949,
+    461,
+    995,
+    531
+   ],
+   "id": "i3"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    1279,
+    488,
+    1328,
+    525
+   ],
+   "id": "i4"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    1374,
+    495,
+    1410,
+    512
+   ],
+   "id": "i5"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    1293,
+    554,
+    1326,
+    590
+   ],
+   "id": "i6"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    130,
+    870,
+    160,
+    900
+   ],
+   "id": "i7"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    128,
+    920,
+    1467,
+    1382
+   ],
+   "id": "i8"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    251,
+    1459,
+    344,
+    1589
+   ],
+   "id": "i9"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    917,
+    1465,
+    1009,
+    1582
+   ],
+   "id": "i10"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    257,
+    1662,
+    361,
+    1790
+   ],
+   "id": "i11"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    904,
+    1668,
+    974,
+    1779
+   ],
+   "id": "i12"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    993,
+    1693,
+    1045,
+    1775
+   ],
+   "id": "i13"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    215,
+    1881,
+    377,
+    1968
+   ],
+   "id": "i14"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    125,
+    2010,
+    1458,
+    2070
+   ],
+   "id": "i15"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    126,
+    2141,
+    1458,
+    2153
+   ],
+   "id": "i16"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    1429,
+    2196,
+    1460,
+    2219
+   ],
+   "id": "i17"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    994,
+    492,
+    1110,
+    496
+   ],
+   "color": "#85C9E9",
+   "width_px": 4,
+   "id": "l0"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    993,
+    533,
+    1111,
+    538
+   ],
+   "color": "#3FADE3",
+   "width_px": 5,
+   "id": "l1"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    655,
+    1590,
+    718,
+    1591
+   ],
+   "color": "#D8E2E6",
+   "width_px": 1,
+   "id": "l2"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    925,
+    1592,
+    1034,
+    1593
+   ],
+   "color": "#D9E0E4",
+   "width_px": 1,
+   "id": "l3"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    1087,
+    1592,
+    1236,
+    1594
+   ],
+   "color": "#D7E2E7",
+   "width_px": 2,
+   "id": "l4"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    1237,
+    1593,
+    1464,
+    1594
+   ],
+   "color": "#D5DFE1",
+   "width_px": 1,
+   "id": "l5"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    885,
+    1793,
+    1026,
+    1794
+   ],
+   "color": "#D8DFE2",
+   "width_px": 1,
+   "id": "l6"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    1166,
+    1794,
+    1229,
+    1795
+   ],
+   "color": "#D7E0E3",
+   "width_px": 1,
+   "id": "l7"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    1231,
+    1794,
+    1430,
+    1796
+   ],
+   "color": "#D8E1E3",
+   "width_px": 2,
+   "id": "l8"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    1115,
+    1995,
+    1178,
+    1996
+   ],
+   "color": "#DBE4E8",
+   "width_px": 1,
+   "id": "l9"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    1469,
+    251,
+    1473,
+    408
+   ],
+   "color": "#49A5E0",
+   "width_px": 4,
+   "id": "l10"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    794,
+    471,
+    799,
+    599
+   ],
+   "color": "#EF9662",
+   "width_px": 5,
+   "id": "l11"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    1465,
+    931,
+    1468,
+    1178
+   ],
+   "color": "#B9BDBE",
+   "width_px": 3,
+   "id": "l12"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    130,
+    990,
+    131,
+    1082
+   ],
+   "color": "#D6DCDC",
+   "width_px": 1,
+   "id": "l13"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    130,
+    1086,
+    131,
+    1216
+   ],
+   "color": "#CBD6D6",
+   "width_px": 1,
+   "id": "l14"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    796,
+    1461,
+    798,
+    1585
+   ],
+   "color": "#BDC3C2",
+   "width_px": 2,
+   "id": "l15"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    1131,
+    1462,
+    1133,
+    1587
+   ],
+   "color": "#BEC3C1",
+   "width_px": 2,
+   "id": "l16"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    459,
+    1474,
+    460,
+    1583
+   ],
+   "color": "#B8B9B9",
+   "width_px": 1,
+   "id": "l17"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    458,
+    1659,
+    460,
+    1785
+   ],
+   "color": "#BCC0BF",
+   "width_px": 2,
+   "id": "l18"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    1130,
+    1663,
+    1131,
+    1788
+   ],
+   "color": "#B3B5B4",
+   "width_px": 1,
+   "id": "l19"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    457,
+    1861,
+    459,
+    1985
+   ],
+   "color": "#BABDBC",
+   "width_px": 2,
+   "id": "l20"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    1460,
+    2020,
+    1461,
+    2151
+   ],
+   "color": "#C7CCD0",
+   "width_px": 1,
+   "id": "l21"
+  },
+  {
+   "id": "t0",
+   "type": "text",
+   "text": "고속도로 민간투자 태양광",
+   "bbox": [
+    1147,
+    143,
+    1400,
+    167
+   ],
+   "font_px": 24.0,
+   "color": "#484A49",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t1",
+   "type": "text",
+   "text": "발전사입",
+   "bbox": [
+    1408,
+    147,
+    1470,
+    164
+   ],
+   "font_px": 17.0,
+   "color": "#ACB0AF",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t2",
+   "type": "text",
+   "text": "(4) 안전대책 및 안전점검 계획",
+   "bbox": [
+    134,
+    192,
+    521,
+    227
+   ],
+   "font_px": 35.0,
+   "color": "#414242",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t3",
+   "type": "text",
+   "text": "• 고속도로 주행치량의 안전에 영힝℃l 없도록, 고속도로와 이격하여 부처도로에서 공시수행\n• 부처도로를 통행히는 주민, 농민의 안전사고 예방을 위하여 농한기 시공계획 수립\n• 공人구긴내 안전을 위하여 안전관리자 통제하에 직업 수행",
+   "bbox": [
+    317,
+    268,
+    1338,
+    384
+   ],
+   "font_px": 32.0,
+   "color": "#3C3E3E",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 42.5,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t4",
+   "type": "text",
+   "text": "중점시항",
+   "bbox": [
+    165,
+    308,
+    273,
+    338
+   ],
+   "font_px": 30.0,
+   "color": "#CBE8F4",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#0078A8"
+  },
+  {
+   "id": "t5",
+   "type": "text",
+   "text": "방지대책\n• 모듈, 구조물 영중 시 고속도로 하향 양중\n• 크레인 작업반경내 입출입 통제\n• 크레인 직업중량 및 허용재원 준수\n• 직업 전 직업특성에 맞는 안전교육 실시\n교 통 사 고 • 작업자 고속도로 접근금지, 안전요원 배치\n• 부처도로통행을우한30m의 초소폭원 유지\n• 2인1조 직업, 자발적 위험인식 함양 교육\n• 굴착7 는 전도예방을 위한 트르다식징腷 I 사용\n• 소형자재도 가급적 크레인, 굴착기 운반",
+   "bbox": [
+    142,
+    433,
+    791,
+    830
+   ],
+   "font_px": 29.0,
+   "color": "#946F35",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 40.9,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t6",
+   "type": "text",
+   "text": "인명사고",
+   "bbox": [
+    1015,
+    450,
+    1088,
+    471
+   ],
+   "font_px": 21.0,
+   "color": "#DBF4FB",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#78C0D8"
+  },
+  {
+   "id": "t7",
+   "type": "text",
+   "text": "교통사고\n발생",
+   "bbox": [
+    847,
+    465,
+    920,
+    513
+   ],
+   "font_px": 21.0,
+   "color": "#484B4B",
+   "bold": false,
+   "align": "center",
+   "pitch_px": 27.0,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t8",
+   "type": "text",
+   "text": "119신고\n(초기대응)",
+   "bbox": [
+    1179,
+    467,
+    1265,
+    515
+   ],
+   "font_px": 21.5,
+   "color": "#555858",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 25.0,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t9",
+   "type": "text",
+   "text": "대표이사",
+   "bbox": [
+    1357,
+    467,
+    1429,
+    488
+   ],
+   "font_px": 21.0,
+   "color": "#535755",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t10",
+   "type": "text",
+   "text": "단순사고",
+   "bbox": [
+    1015,
+    504,
+    1088,
+    525
+   ],
+   "font_px": 21.0,
+   "color": "#4A4C4C",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t11",
+   "type": "text",
+   "text": "재발방지\n조치시행",
+   "bbox": [
+    846,
+    626,
+    918,
+    673
+   ],
+   "font_px": 20.5,
+   "color": "#555958",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 27.0,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t12",
+   "type": "text",
+   "text": "안전관리\n팀장보고",
+   "bbox": [
+    1015,
+    627,
+    1087,
+    674
+   ],
+   "font_px": 20.5,
+   "color": "#5A5E5E",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 26.0,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t13",
+   "type": "text",
+   "text": "도공\n사업개발처",
+   "bbox": [
+    1175,
+    628,
+    1267,
+    675
+   ],
+   "font_px": 20.5,
+   "color": "#515352",
+   "bold": false,
+   "align": "center",
+   "pitch_px": 26.0,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t14",
+   "type": "text",
+   "text": "도공\n관할지사",
+   "bbox": [
+    1355,
+    629,
+    1428,
+    675
+   ],
+   "font_px": 20.0,
+   "color": "#575B5A",
+   "bold": false,
+   "align": "center",
+   "pitch_px": 26.0,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t15",
+   "type": "text",
+   "text": "• 현장책임자 안전교육 0 수전71안전관리법 25조)\n• 직업팀은 도로치단 안전관리계획서를 별도 제출\n• 인명사고시 1 19 신고 선조치 후 보고",
+   "bbox": [
+    825,
+    722,
+    1366,
+    825
+   ],
+   "font_px": 28.0,
+   "color": "#474948",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 37.5,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t16",
+   "type": "text",
+   "text": "협 착 사 고\n전 도 사 고",
+   "bbox": [
+    142,
+    741,
+    297,
+    808
+   ],
+   "font_px": 27.5,
+   "color": "#393C3D",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 40.0,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t17",
+   "type": "text",
+   "text": "서산시 안호리 태양광발전소 예시(성토부11)",
+   "bbox": [
+    171,
+    871,
+    712,
+    907
+   ],
+   "font_px": 36.0,
+   "color": "#383A39",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t18",
+   "type": "text",
+   "text": "신호수",
+   "bbox": [
+    173,
+    935,
+    226,
+    956
+   ],
+   "font_px": 21.0,
+   "color": "#747978",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#A8C0A8"
+  },
+  {
+   "id": "t19",
+   "type": "text",
+   "text": "신호수",
+   "bbox": [
+    1295,
+    941,
+    1354,
+    962
+   ],
+   "font_px": 21.0,
+   "color": "#7B7F7C",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#A8A8A8"
+  },
+  {
+   "id": "t20",
+   "type": "text",
+   "text": "작업구역",
+   "bbox": [
+    728,
+    1051,
+    818,
+    1076
+   ],
+   "font_px": 25.0,
+   "color": "#6D7170",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t21",
+   "type": "text",
+   "text": ":주:耳국苳국 •=국후국그才 -4嵂 그",
+   "bbox": [
+    897,
+    1098,
+    1296,
+    1118
+   ],
+   "font_px": 20.0,
+   "color": "#7B9EAB",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#004890"
+  },
+  {
+   "id": "t22",
+   "type": "text",
+   "text": "월i콘 들레才공言}f귀』",
+   "bbox": [
+    568,
+    1179,
+    1467,
+    1358
+   ],
+   "font_px": 179.0,
+   "color": "#AAA99A",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t23",
+   "type": "text",
+   "text": "0 교통안내 표지판 설치",
+   "bbox": [
+    651,
+    1413,
+    939,
+    1443
+   ],
+   "font_px": 30.0,
+   "color": "#484D4E",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#C0D8D8"
+  },
+  {
+   "id": "t24",
+   "type": "text",
+   "text": "• 공시구간 전방 설치\n• 부체도로 통행자 사전 인지\n• 각 필요 위치별로 설치",
+   "bbox": [
+    473,
+    1468,
+    782,
+    1577
+   ],
+   "font_px": 28.0,
+   "color": "#4D4F4E",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 40.5,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t25",
+   "type": "text",
+   "text": "• 공사구간 전방 설치\n• 부처도로 통행자人l전 인지\n• 직업구역에 따라 수시 이동",
+   "bbox": [
+    1145,
+    1472,
+    1451,
+    1580
+   ],
+   "font_px": 27.0,
+   "color": "#484B4A",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 40.5,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t26",
+   "type": "text",
+   "text": "사",
+   "bbox": [
+    958,
+    1557,
+    970,
+    1571
+   ],
+   "font_px": 14.0,
+   "color": "#B4A379",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0C030"
+  },
+  {
+   "id": "t27",
+   "type": "text",
+   "text": "공사안내 표지판 설치",
+   "bbox": [
+    351,
+    1613,
+    602,
+    1642
+   ],
+   "font_px": 29.0,
+   "color": "#323637",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#C0D8D8"
+  },
+  {
+   "id": "t28",
+   "type": "text",
+   "text": "PE드럼 러버콘, 윙카 설치",
+   "bbox": [
+    998,
+    1617,
+    1300,
+    1646
+   ],
+   "font_px": 29.0,
+   "color": "#333737",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#C0D8D8"
+  },
+  {
+   "id": "t29",
+   "type": "text",
+   "text": "• 공시구간 전방 설치\n• 부처도로 통행자 사전인지\n• 공시나용진뢴!에 다bl여 명기",
+   "bbox": [
+    472,
+    1669,
+    777,
+    1778
+   ],
+   "font_px": 28.0,
+   "color": "#4B4E4D",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 40.5,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t30",
+   "type": "text",
+   "text": "• 공사구역 경계 설치\n• 야간 통행객의 안전을\n위하여 필요시 윙카 설치",
+   "bbox": [
+    1144,
+    1674,
+    1428,
+    1780
+   ],
+   "font_px": 28.0,
+   "color": "#4A4D4C",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 39.0,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t31",
+   "type": "text",
+   "text": "0 자재운반 사다리차 직업",
+   "bbox": [
+    300,
+    1812,
+    613,
+    1843
+   ],
+   "font_px": 31.0,
+   "color": "#414546",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#C0D8D8"
+  },
+  {
+   "id": "t32",
+   "type": "text",
+   "text": "안전요원 배치",
+   "bbox": [
+    1066,
+    1818,
+    1230,
+    1846
+   ],
+   "font_px": 28.0,
+   "color": "#393C3D",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#C0D8D8"
+  },
+  {
+   "id": "t33",
+   "type": "text",
+   "text": "보호경",
+   "bbox": [
+    815,
+    1869,
+    861,
+    1887
+   ],
+   "font_px": 18.0,
+   "color": "#57585A",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t34",
+   "type": "text",
+   "text": "• 성토비틸면 자재 인양\n• 전도사고 유의\n• 철재구조물 등 운반",
+   "bbox": [
+    471,
+    1870,
+    725,
+    1980
+   ],
+   "font_px": 29.0,
+   "color": "#484A4A",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 40.5,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t35",
+   "type": "text",
+   "text": "? -4- 안전모 • 직업구역 안전 사고 예방\n,7 - \\안전장갑 • 차량통제 및 보행人고\n안전화 예방",
+   "bbox": [
+    852,
+    1870,
+    1430,
+    1981
+   ],
+   "font_px": 35.0,
+   "color": "#787F66",
+   "bold": false,
+   "align": "center",
+   "pitch_px": 41.0,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t36",
+   "type": "text",
+   "text": "안전고리 -구",
+   "bbox": [
+    831,
+    1915,
+    960,
+    1934
+   ],
+   "font_px": 19.0,
+   "color": "#919380",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t37",
+   "type": "text",
+   "text": "4\n야광보호구",
+   "bbox": [
+    814,
+    1943,
+    892,
+    1981
+   ],
+   "font_px": 17.5,
+   "color": "#7A7C65",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 19.0,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t38",
+   "type": "text",
+   "text": "• 괸련표지 설치 후 운전자가 통행방법을 이해하지 못하거나, 안전문제가 발생;(예상) 될 경우 즉시 수정 후 재설치\n• 7 존 표지와 도로 공시구간 주의표지 내용이 드를 경우 2 존 표지를 기리거나 임人로 제거\n• 가급적 직업보호 자동차를 2대 이상 배치하며, 직업 활동구역과 초소 60m 이상 이격하여 배치",
+   "bbox": [
+    145,
+    2029,
+    1358,
+    2137
+   ],
+   "font_px": 32.0,
+   "color": "#4D4F4F",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 38.0,
+   "bg": "#F0F0F0"
+  }
+ ]
+}

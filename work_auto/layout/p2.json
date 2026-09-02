@@ -1,0 +1,2114 @@
+{
+ "page": 2,
+ "width": 1620,
+ "height": 2304,
+ "pt_w": 583.2000122070312,
+ "pt_h": 829.4400024414062,
+ "dpi": 200,
+ "elements": [
+  {
+   "type": "rect",
+   "bbox": [
+    620,
+    1900,
+    1028,
+    1962
+   ],
+   "fill": "#E2E5ED",
+   "id": "r0"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    618,
+    1578,
+    1026,
+    1616
+   ],
+   "fill": "#E5E7EE",
+   "id": "r1"
+  },
+  {
+   "type": "rect",
+   "bbox": [
+    1409,
+    246,
+    1509,
+    293
+   ],
+   "fill": "#D2DFE0",
+   "id": "r2"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    168,
+    32,
+    288,
+    133
+   ],
+   "id": "i0"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    166,
+    247,
+    1409,
+    313
+   ],
+   "id": "i1"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    167,
+    355,
+    1511,
+    370
+   ],
+   "id": "i2"
+  },
+  {
+   "type": "image",
+   "bbox": [
+    193,
+    391,
+    1515,
+    2152
+   ],
+   "id": "i3"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    875,
+    917,
+    995,
+    922
+   ],
+   "color": "#CDBFAC",
+   "width_px": 5,
+   "id": "l0"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    1304,
+    1830,
+    1424,
+    1833
+   ],
+   "color": "#777777",
+   "width_px": 3,
+   "id": "l1"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    621,
+    1960,
+    691,
+    1961
+   ],
+   "color": "#D8D7DB",
+   "width_px": 1,
+   "id": "l2"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    199,
+    2084,
+    260,
+    2085
+   ],
+   "color": "#D8DBDF",
+   "width_px": 1,
+   "id": "l3"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    1408,
+    297,
+    1409,
+    360
+   ],
+   "color": "#929594",
+   "width_px": 1,
+   "id": "l4"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    187,
+    1525,
+    193,
+    2146
+   ],
+   "color": "#7C8C8E",
+   "width_px": 6,
+   "id": "l5"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    1209,
+    1617,
+    1211,
+    1801
+   ],
+   "color": "#BBBCBF",
+   "width_px": 2,
+   "id": "l6"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    911,
+    1618,
+    912,
+    1716
+   ],
+   "color": "#B3B7B9",
+   "width_px": 1,
+   "id": "l7"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    681,
+    1621,
+    683,
+    1906
+   ],
+   "color": "#B7B7B9",
+   "width_px": 2,
+   "id": "l8"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    258,
+    1624,
+    263,
+    2138
+   ],
+   "color": "#ACAEAF",
+   "width_px": 5,
+   "id": "l9"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    912,
+    1739,
+    915,
+    2084
+   ],
+   "color": "#B0B3B5",
+   "width_px": 3,
+   "id": "l10"
+  },
+  {
+   "type": "line",
+   "bbox": [
+    683,
+    1943,
+    685,
+    2134
+   ],
+   "color": "#AFB3B3",
+   "width_px": 2,
+   "id": "l11"
+  },
+  {
+   "id": "t0",
+   "type": "text",
+   "text": "건설계획",
+   "bbox": [
+    309,
+    69,
+    498,
+    121
+   ],
+   "font_px": 52.0,
+   "color": "#403D47",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t1",
+   "type": "text",
+   "text": "Chapter",
+   "bbox": [
+    168,
+    86,
+    224,
+    101
+   ],
+   "font_px": 15.0,
+   "color": "#94B6D5",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t2",
+   "type": "text",
+   "text": "ü 전체 사업대상지 현황",
+   "bbox": [
+    166,
+    206,
+    474,
+    239
+   ],
+   "font_px": 33.0,
+   "color": "#3A3F3F",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t3",
+   "type": "text",
+   "text": "비고",
+   "bbox": [
+    1429,
+    258,
+    1491,
+    287
+   ],
+   "font_px": 29.0,
+   "color": "#272C2C",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#C0D8D8"
+  },
+  {
+   "id": "t4",
+   "type": "text",
+   "text": "권 역(행정소,ÄH)",
+   "bbox": [
+    837,
+    261,
+    1019,
+    293
+   ],
+   "font_px": 32.0,
+   "color": "#252829",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#C0D8D8"
+  },
+  {
+   "id": "t5",
+   "type": "text",
+   "text": "권역번호 사업규모",
+   "bbox": [
+    182,
+    269,
+    428,
+    298
+   ],
+   "font_px": 29.0,
+   "color": "#272A2B",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#C0D8D8"
+  },
+  {
+   "id": "t6",
+   "type": "text",
+   "text": "10,062.60 경2도 강원되 충청북도 충청남도 서을특별人I, 인천릥쪅人L 대진쾽쪅人I 서종특별자大시",
+   "bbox": [
+    321,
+    315,
+    1399,
+    352
+   ],
+   "font_px": 37.0,
+   "color": "#3D3F3E",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t7",
+   "type": "text",
+   "text": "1",
+   "bbox": [
+    229,
+    327,
+    237,
+    350
+   ],
+   "font_px": 23.0,
+   "color": "#313334",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t8",
+   "type": "text",
+   "text": "중앙선",
+   "bbox": [
+    922,
+    600,
+    990,
+    625
+   ],
+   "font_px": 25.0,
+   "color": "#B06A9C",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t9",
+   "type": "text",
+   "text": "강원도",
+   "bbox": [
+    999,
+    681,
+    1067,
+    707
+   ],
+   "font_px": 26.0,
+   "color": "#4C4C4D",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t10",
+   "type": "text",
+   "text": "<%서을",
+   "bbox": [
+    545,
+    732,
+    634,
+    762
+   ],
+   "font_px": 30.0,
+   "color": "#83827D",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#D8D8C0"
+  },
+  {
+   "id": "t11",
+   "type": "text",
+   "text": "\\ 중부선 0",
+   "bbox": [
+    772,
+    753,
+    954,
+    793
+   ],
+   "font_px": 40.0,
+   "color": "#8E7381",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0D8C0"
+  },
+  {
+   "id": "t12",
+   "type": "text",
+   "text": "의인천-",
+   "bbox": [
+    493,
+    780,
+    558,
+    808
+   ],
+   "font_px": 28.0,
+   "color": "#8A8B8A",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t13",
+   "type": "text",
+   "text": "구•” 경기로`",
+   "bbox": [
+    593,
+    818,
+    722,
+    847
+   ],
+   "font_px": 29.0,
+   "color": "#95B1B4",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t14",
+   "type": "text",
+   "text": "여도서 `",
+   "bbox": [
+    896,
+    885,
+    992,
+    903
+   ],
+   "font_px": 18.0,
+   "color": "#B39FAD",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t15",
+   "type": "text",
+   "text": "0 L—",
+   "bbox": [
+    921,
+    901,
+    962,
+    910
+   ],
+   "font_px": 9.0,
+   "color": "#A95F93",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t16",
+   "type": "text",
+   "text": "평택제첱선닣\\",
+   "bbox": [
+    714,
+    917,
+    871,
+    957
+   ],
+   "font_px": 40.0,
+   "color": "#9E7E98",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#D8D8C0"
+  },
+  {
+   "id": "t17",
+   "type": "text",
+   "text": "당집청준선나~겨",
+   "bbox": [
+    390,
+    973,
+    558,
+    1003
+   ],
+   "font_px": 30.0,
+   "color": "#9D7894",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t18",
+   "type": "text",
+   "text": "0 丁 드",
+   "bbox": [
+    739,
+    1032,
+    802,
+    1044
+   ],
+   "font_px": 12.0,
+   "color": "#A36597",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t19",
+   "type": "text",
+   "text": "0",
+   "bbox": [
+    474,
+    1034,
+    504,
+    1064
+   ],
+   "font_px": 30.0,
+   "color": "#377B42",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#D8D8C0"
+  },
+  {
+   "id": "t20",
+   "type": "text",
+   "text": "충청북도",
+   "bbox": [
+    822,
+    1035,
+    914,
+    1060
+   ],
+   "font_px": 25.0,
+   "color": "#3D3F3F",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t21",
+   "type": "text",
+   "text": "4",
+   "bbox": [
+    640,
+    1063,
+    651,
+    1081
+   ],
+   "font_px": 18.0,
+   "color": "#C9C8BF",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#007830"
+  },
+  {
+   "id": "t22",
+   "type": "text",
+   "text": "5",
+   "bbox": [
+    670,
+    1063,
+    680,
+    1081
+   ],
+   "font_px": 18.0,
+   "color": "#C2C4BE",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#007830"
+  },
+  {
+   "id": "t23",
+   "type": "text",
+   "text": "6",
+   "bbox": [
+    699,
+    1063,
+    709,
+    1081
+   ],
+   "font_px": 18.0,
+   "color": "#C1C9BE",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#007830"
+  },
+  {
+   "id": "t24",
+   "type": "text",
+   "text": "14",
+   "bbox": [
+    742,
+    1086,
+    764,
+    1104
+   ],
+   "font_px": 18.0,
+   "color": "#D6DCD7",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#186030"
+  },
+  {
+   "id": "t25",
+   "type": "text",
+   "text": "서산영덕선.",
+   "bbox": [
+    341,
+    1137,
+    459,
+    1167
+   ],
+   "font_px": 30.0,
+   "color": "#A16496",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t26",
+   "type": "text",
+   "text": "충청남도O",
+   "bbox": [
+    508,
+    1158,
+    642,
+    1201
+   ],
+   "font_px": 43.0,
+   "color": "#3A773E",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#D8D8C0"
+  },
+  {
+   "id": "t27",
+   "type": "text",
+   "text": "경상북도",
+   "bbox": [
+    1107,
+    1194,
+    1197,
+    1220
+   ],
+   "font_px": 26.0,
+   "color": "#545556",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t28",
+   "type": "text",
+   "text": "대전",
+   "bbox": [
+    728,
+    1231,
+    771,
+    1256
+   ],
+   "font_px": 25.0,
+   "color": "#5C5D5D",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t29",
+   "type": "text",
+   "text": "서해안선",
+   "bbox": [
+    338,
+    1235,
+    428,
+    1261
+   ],
+   "font_px": 26.0,
+   "color": "#A5629B",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t30",
+   "type": "text",
+   "text": "〔수배휘",
+   "bbox": [
+    1086,
+    1392,
+    1197,
+    1441
+   ],
+   "font_px": 49.0,
+   "color": "#9DBCC5",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t31",
+   "type": "text",
+   "text": "전라북도",
+   "bbox": [
+    621,
+    1442,
+    712,
+    1467
+   ],
+   "font_px": 25.0,
+   "color": "#4E4E4E",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t32",
+   "type": "text",
+   "text": "지역별 •노선별 현황",
+   "bbox": [
+    1082,
+    1528,
+    1321,
+    1557
+   ],
+   "font_px": 29.0,
+   "color": "#D6F4FA",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#0090D8"
+  },
+  {
+   "id": "t33",
+   "type": "text",
+   "text": "울산",
+   "bbox": [
+    1350,
+    1530,
+    1396,
+    1556
+   ],
+   "font_px": 26.0,
+   "color": "#595C5D",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t34",
+   "type": "text",
+   "text": "위치별 현황",
+   "bbox": [
+    217,
+    1536,
+    359,
+    1565
+   ],
+   "font_px": 29.0,
+   "color": "#D5F4F9",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#0090D8"
+  },
+  {
+   "id": "t35",
+   "type": "text",
+   "text": "개소 수",
+   "bbox": [
+    1396,
+    1581,
+    1458,
+    1602
+   ],
+   "font_px": 21.0,
+   "color": "#2E3132",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#D8D8D8"
+  },
+  {
+   "id": "t36",
+   "type": "text",
+   "text": "설치용량",
+   "bbox": [
+    1245,
+    1582,
+    1318,
+    1604
+   ],
+   "font_px": 22.0,
+   "color": "#313133",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#D8D8D8"
+  },
+  {
+   "id": "t37",
+   "type": "text",
+   "text": "구 분",
+   "bbox": [
+    1107,
+    1584,
+    1166,
+    1605
+   ],
+   "font_px": 21.0,
+   "color": "#414549",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#D8D8D8"
+  },
+  {
+   "id": "t38",
+   "type": "text",
+   "text": "설치용량",
+   "bbox": [
+    933,
+    1585,
+    1007,
+    1606
+   ],
+   "font_px": 21.0,
+   "color": "#353637",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#D8D8D8"
+  },
+  {
+   "id": "t39",
+   "type": "text",
+   "text": "사업위치",
+   "bbox": [
+    795,
+    1586,
+    868,
+    1607
+   ],
+   "font_px": 21.0,
+   "color": "#313233",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#D8D8D8"
+  },
+  {
+   "id": "t40",
+   "type": "text",
+   "text": "구분",
+   "bbox": [
+    625,
+    1588,
+    670,
+    1609
+   ],
+   "font_px": 21.0,
+   "color": "#303234",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#D8D8D8"
+  },
+  {
+   "id": "t41",
+   "type": "text",
+   "text": "설치용량",
+   "bbox": [
+    510,
+    1589,
+    584,
+    1610
+   ],
+   "font_px": 21.0,
+   "color": "#3D3D3F",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#D8D8D8"
+  },
+  {
+   "id": "t42",
+   "type": "text",
+   "text": "사업위치",
+   "bbox": [
+    373,
+    1590,
+    445,
+    1611
+   ],
+   "font_px": 21.0,
+   "color": "#414445",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#D8D8D8"
+  },
+  {
+   "id": "t43",
+   "type": "text",
+   "text": "구분",
+   "bbox": [
+    204,
+    1592,
+    248,
+    1613
+   ],
+   "font_px": 21.0,
+   "color": "#323334",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#D8D8D8"
+  },
+  {
+   "id": "t44",
+   "type": "text",
+   "text": "4개소",
+   "bbox": [
+    1415,
+    1626,
+    1458,
+    1644
+   ],
+   "font_px": 18.0,
+   "color": "#5B5B5C",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t45",
+   "type": "text",
+   "text": "경기권",
+   "bbox": [
+    1114,
+    1629,
+    1161,
+    1647
+   ],
+   "font_px": 18.0,
+   "color": "#474C4C",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t46",
+   "type": "text",
+   "text": "2,071.20kW",
+   "bbox": [
+    1243,
+    1629,
+    1334,
+    1647
+   ],
+   "font_px": 18.0,
+   "color": "#63696A",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t47",
+   "type": "text",
+   "text": "0",
+   "bbox": [
+    633,
+    1631,
+    666,
+    1662
+   ],
+   "font_px": 31.0,
+   "color": "#2E8148",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t48",
+   "type": "text",
+   "text": "평택제천선(19.74~19.84k)",
+   "bbox": [
+    271,
+    1634,
+    489,
+    1656
+   ],
+   "font_px": 22.0,
+   "color": "#555757",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t49",
+   "type": "text",
+   "text": "서해안선 (251.2~251.7k)",
+   "bbox": [
+    698,
+    1634,
+    897,
+    1655
+   ],
+   "font_px": 21.0,
+   "color": "#5B5C5C",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t50",
+   "type": "text",
+   "text": "999.60kW",
+   "bbox": [
+    941,
+    1635,
+    1019,
+    1652
+   ],
+   "font_px": 17.0,
+   "color": "#626364",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t51",
+   "type": "text",
+   "text": "380.40kW",
+   "bbox": [
+    517,
+    1636,
+    595,
+    1652
+   ],
+   "font_px": 16.0,
+   "color": "#5F6261",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t52",
+   "type": "text",
+   "text": "11개소",
+   "bbox": [
+    1407,
+    1673,
+    1458,
+    1691
+   ],
+   "font_px": 18.0,
+   "color": "#5F6263",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t53",
+   "type": "text",
+   "text": "충남/충북권",
+   "bbox": [
+    1093,
+    1675,
+    1181,
+    1695
+   ],
+   "font_px": 20.0,
+   "color": "#535455",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t54",
+   "type": "text",
+   "text": "7.746.00kW",
+   "bbox": [
+    1243,
+    1676,
+    1335,
+    1693
+   ],
+   "font_px": 17.0,
+   "color": "#65686A",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t55",
+   "type": "text",
+   "text": "평택제천선(13.45~13.6k) !",
+   "bbox": [
+    271,
+    1682,
+    496,
+    1718
+   ],
+   "font_px": 36.0,
+   "color": "#5A5D5C",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t56",
+   "type": "text",
+   "text": "272.40kW",
+   "bbox": [
+    518,
+    1687,
+    596,
+    1704
+   ],
+   "font_px": 17.0,
+   "color": "#5E605F",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t57",
+   "type": "text",
+   "text": "0",
+   "bbox": [
+    633,
+    1688,
+    664,
+    1720
+   ],
+   "font_px": 32.0,
+   "color": "#397849",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t58",
+   "type": "text",
+   "text": "경부선 (305.2~305.44k)",
+   "bbox": [
+    699,
+    1691,
+    889,
+    1712
+   ],
+   "font_px": 21.0,
+   "color": "#535555",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t59",
+   "type": "text",
+   "text": "678.60kW",
+   "bbox": [
+    941,
+    1692,
+    1020,
+    1709
+   ],
+   "font_px": 17.0,
+   "color": "#5B5F60",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t60",
+   "type": "text",
+   "text": "3개소",
+   "bbox": [
+    1416,
+    1720,
+    1458,
+    1737
+   ],
+   "font_px": 17.0,
+   "color": "#585C5C",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t61",
+   "type": "text",
+   "text": "강원권",
+   "bbox": [
+    1114,
+    1722,
+    1162,
+    1741
+   ],
+   "font_px": 19.0,
+   "color": "#555858",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t62",
+   "type": "text",
+   "text": "2.490.00kW",
+   "bbox": [
+    1243,
+    1723,
+    1335,
+    1740
+   ],
+   "font_px": 17.0,
+   "color": "#616566",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t63",
+   "type": "text",
+   "text": "0",
+   "bbox": [
+    211,
+    1735,
+    242,
+    1766
+   ],
+   "font_px": 31.0,
+   "color": "#318548",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t64",
+   "type": "text",
+   "text": "영동선 (91.48~91.81k)",
+   "bbox": [
+    272,
+    1737,
+    454,
+    1759
+   ],
+   "font_px": 22.0,
+   "color": "#5C5E5F",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t65",
+   "type": "text",
+   "text": "98460kW",
+   "bbox": [
+    518,
+    1739,
+    596,
+    1755
+   ],
+   "font_px": 16.0,
+   "color": "#5D6060",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t66",
+   "type": "text",
+   "text": "0",
+   "bbox": [
+    633,
+    1746,
+    667,
+    1776
+   ],
+   "font_px": 30.0,
+   "color": "#3E7949",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t67",
+   "type": "text",
+   "text": "경부선 (306.28~306.84k)",
+   "bbox": [
+    699,
+    1748,
+    900,
+    1769
+   ],
+   "font_px": 21.0,
+   "color": "#575959",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t68",
+   "type": "text",
+   "text": "684.60kW",
+   "bbox": [
+    942,
+    1749,
+    1020,
+    1766
+   ],
+   "font_px": 17.0,
+   "color": "#5C5E5E",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t69",
+   "type": "text",
+   "text": "18개소",
+   "bbox": [
+    1408,
+    1767,
+    1458,
+    1784
+   ],
+   "font_px": 17.0,
+   "color": "#575C5E",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t70",
+   "type": "text",
+   "text": "12,307.20kW",
+   "bbox": [
+    1235,
+    1769,
+    1335,
+    1787
+   ],
+   "font_px": 18.0,
+   "color": "#5D6364",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t71",
+   "type": "text",
+   "text": "당진청주선 (39.0~39.12k)",
+   "bbox": [
+    272,
+    1789,
+    480,
+    1810
+   ],
+   "font_px": 21.0,
+   "color": "#5A5C5C",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t72",
+   "type": "text",
+   "text": "541.20kW",
+   "bbox": [
+    519,
+    1790,
+    596,
+    1807
+   ],
+   "font_px": 17.0,
+   "color": "#595B5B",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t73",
+   "type": "text",
+   "text": "0",
+   "bbox": [
+    634,
+    1803,
+    665,
+    1835
+   ],
+   "font_px": 32.0,
+   "color": "#367B47",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t74",
+   "type": "text",
+   "text": "경부선 (306.84~307.13k)",
+   "bbox": [
+    699,
+    1805,
+    900,
+    1826
+   ],
+   "font_px": 21.0,
+   "color": "#515353",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t75",
+   "type": "text",
+   "text": "499.80kW",
+   "bbox": [
+    942,
+    1806,
+    1020,
+    1823
+   ],
+   "font_px": 17.0,
+   "color": "#5B5D5E",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t76",
+   "type": "text",
+   "text": "중부선\n433.8대(W",
+   "bbox": [
+    1425,
+    1810,
+    1500,
+    1850
+   ],
+   "font_px": 17.0,
+   "color": "#535658",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 24.0,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t77",
+   "type": "text",
+   "text": "평택 제천선\n6528대(W",
+   "bbox": [
+    1073,
+    1818,
+    1159,
+    1860
+   ],
+   "font_px": 17.5,
+   "color": "#535557",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 26.0,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t78",
+   "type": "text",
+   "text": "당진정주선 (40.44~40.7k)",
+   "bbox": [
+    273,
+    1840,
+    481,
+    1862
+   ],
+   "font_px": 22.0,
+   "color": "#575859",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t79",
+   "type": "text",
+   "text": "325.80kW",
+   "bbox": [
+    519,
+    1841,
+    597,
+    1858
+   ],
+   "font_px": 17.0,
+   "color": "#5F6262",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t80",
+   "type": "text",
+   "text": "중앙선 (386.35~386.65k)",
+   "bbox": [
+    699,
+    1862,
+    901,
+    1883
+   ],
+   "font_px": 21.0,
+   "color": "#525556",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t81",
+   "type": "text",
+   "text": "679.20kW",
+   "bbox": [
+    943,
+    1863,
+    1021,
+    1880
+   ],
+   "font_px": 17.0,
+   "color": "#5A5C5D",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t82",
+   "type": "text",
+   "text": "당진청주선 (43.3~43.47k)",
+   "bbox": [
+    273,
+    1892,
+    481,
+    1913
+   ],
+   "font_px": 21.0,
+   "color": "#595B5B",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t83",
+   "type": "text",
+   "text": "964.20kW",
+   "bbox": [
+    519,
+    1893,
+    597,
+    1910
+   ],
+   "font_px": 17.0,
+   "color": "#5E6160",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t84",
+   "type": "text",
+   "text": "영동선\n9846*W",
+   "bbox": [
+    1074,
+    1897,
+    1149,
+    1939
+   ],
+   "font_px": 17.0,
+   "color": "#5B5D5E",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 26.0,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t85",
+   "type": "text",
+   "text": "서산 영덕선\n3.0522僛W\n중앙선\n2490.0*W",
+   "bbox": [
+    1412,
+    1897,
+    1501,
+    1988
+   ],
+   "font_px": 18.0,
+   "color": "#585A5A",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 24.7,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t86",
+   "type": "text",
+   "text": "합",
+   "bbox": [
+    726,
+    1921,
+    744,
+    1941
+   ],
+   "font_px": 20.0,
+   "color": "#2B2B30",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#D8D8D8"
+  },
+  {
+   "id": "t87",
+   "type": "text",
+   "text": "10 062.60kW",
+   "bbox": [
+    925,
+    1921,
+    1021,
+    1938
+   ],
+   "font_px": 17.0,
+   "color": "#383A3B",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#D8D8D8"
+  },
+  {
+   "id": "t88",
+   "type": "text",
+   "text": "서산영덕선(51.07~51.21k)",
+   "bbox": [
+    273,
+    1943,
+    491,
+    1964
+   ],
+   "font_px": 21.0,
+   "color": "#535454",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t89",
+   "type": "text",
+   "text": "999.60kW",
+   "bbox": [
+    519,
+    1944,
+    597,
+    1961
+   ],
+   "font_px": 17.0,
+   "color": "#575957",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t90",
+   "type": "text",
+   "text": "서해안선",
+   "bbox": [
+    1075,
+    1963,
+    1138,
+    1981
+   ],
+   "font_px": 18.0,
+   "color": "#494A4A",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t91",
+   "type": "text",
+   "text": "중부선 (3기 .46~321.77k)",
+   "bbox": [
+    700,
+    1976,
+    902,
+    1998
+   ],
+   "font_px": 22.0,
+   "color": "#565757",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t92",
+   "type": "text",
+   "text": "433.80kW",
+   "bbox": [
+    944,
+    1977,
+    1022,
+    1994
+   ],
+   "font_px": 17.0,
+   "color": "#585B5B",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t93",
+   "type": "text",
+   "text": "甄aw-℃",
+   "bbox": [
+    1075,
+    1979,
+    1213,
+    2005
+   ],
+   "font_px": 26.0,
+   "color": "#5B5D5D",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t94",
+   "type": "text",
+   "text": "서산영덕선 (53.76~53.85k)",
+   "bbox": [
+    273,
+    1994,
+    492,
+    2016
+   ],
+   "font_px": 22.0,
+   "color": "#5B5E5D",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t95",
+   "type": "text",
+   "text": "448.20kW",
+   "bbox": [
+    520,
+    1996,
+    598,
+    2012
+   ],
+   "font_px": 16.0,
+   "color": "#595D5C",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t96",
+   "type": "text",
+   "text": "15%",
+   "bbox": [
+    1233,
+    2004,
+    1266,
+    2020
+   ],
+   "font_px": 16.0,
+   "color": "#454A52",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#C0D8F0"
+  },
+  {
+   "id": "t97",
+   "type": "text",
+   "text": "15%",
+   "bbox": [
+    1295,
+    2024,
+    1327,
+    2039
+   ],
+   "font_px": 15.0,
+   "color": "#29341B",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#90C048"
+  },
+  {
+   "id": "t98",
+   "type": "text",
+   "text": "0",
+   "bbox": [
+    636,
+    2031,
+    667,
+    2062
+   ],
+   "font_px": 31.0,
+   "color": "#357C45",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t99",
+   "type": "text",
+   "text": "중앙선 (337.71~337.90k)",
+   "bbox": [
+    700,
+    2033,
+    902,
+    2055
+   ],
+   "font_px": 22.0,
+   "color": "#575959",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t100",
+   "type": "text",
+   "text": "811.20kW",
+   "bbox": [
+    944,
+    2035,
+    1022,
+    2052
+   ],
+   "font_px": 17.0,
+   "color": "#5B5D5D",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t101",
+   "type": "text",
+   "text": "서산영덕선(1467~15.23k)",
+   "bbox": [
+    274,
+    2046,
+    492,
+    2067
+   ],
+   "font_px": 21.0,
+   "color": "#4F5050",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t102",
+   "type": "text",
+   "text": "844.80kW",
+   "bbox": [
+    520,
+    2047,
+    598,
+    2063
+   ],
+   "font_px": 16.0,
+   "color": "#545555",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t103",
+   "type": "text",
+   "text": "경부선\n1,863.00(W",
+   "bbox": [
+    1415,
+    2067,
+    1502,
+    2109
+   ],
+   "font_px": 18.0,
+   "color": "#4B4E4E",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 24.0,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t104",
+   "type": "text",
+   "text": "당진 정주선\n1.831.2嗢",
+   "bbox": [
+    1076,
+    2068,
+    1164,
+    2111
+   ],
+   "font_px": 17.5,
+   "color": "#545555",
+   "bold": false,
+   "align": "left",
+   "pitch_px": 26.0,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t105",
+   "type": "text",
+   "text": "999.60kW",
+   "bbox": [
+    945,
+    2093,
+    1023,
+    2109
+   ],
+   "font_px": 16.0,
+   "color": "#515353",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t106",
+   "type": "text",
+   "text": "중앙선 (348.91~349.2k)",
+   "bbox": [
+    700,
+    2094,
+    893,
+    2115
+   ],
+   "font_px": 21.0,
+   "color": "#4C4E4E",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t107",
+   "type": "text",
+   "text": "0",
+   "bbox": [
+    214,
+    2095,
+    245,
+    2126
+   ],
+   "font_px": 31.0,
+   "color": "#3E7446",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t108",
+   "type": "text",
+   "text": "서산영덕선 (31.28~31.47k)",
+   "bbox": [
+    274,
+    2098,
+    493,
+    2119
+   ],
+   "font_px": 21.0,
+   "color": "#555856",
+   "bold": false,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t109",
+   "type": "text",
+   "text": "759.60kW",
+   "bbox": [
+    521,
+    2099,
+    599,
+    2115
+   ],
+   "font_px": 16.0,
+   "color": "#565958",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  },
+  {
+   "id": "t110",
+   "type": "text",
+   "text": "36",
+   "bbox": [
+    182,
+    2208,
+    212,
+    2231
+   ],
+   "font_px": 23.0,
+   "color": "#222423",
+   "bold": true,
+   "align": "left",
+   "pitch_px": null,
+   "bg": "#F0F0F0"
+  }
+ ]
+}
