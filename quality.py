@@ -38,6 +38,7 @@ DEFAULTS = dict(
     max_mae=28.0,          # 평균 절대 픽셀 오차 상한
     text_coverage=0.90,    # OCR 줄 중 PPTX 텍스트로 복원된 비율 하한
     max_slide_gap=0,       # 원본 페이지 수 - 슬라이드 수 허용 차이
+    max_unsupported=0,     # 복원 못 한 객체 허용 개수. 기본은 0건 = 있으면 실패
 )
 
 
@@ -86,11 +87,19 @@ def page_metrics(orig_bgr, rend_bgr, grid=None):
 def text_coverage(work, page):
     """OCR이 읽은 줄 중 레이아웃 요소로 살아남은 비율. 조용한 누락 탐지용."""
     ocr_p, lay_p = f"{work}/ocr/p{page}.json", f"{work}/layout/p{page}.json"
-    if not (os.path.exists(ocr_p) and os.path.exists(lay_p)):
+    if not os.path.exists(lay_p):
         return None
-    ocr = json.load(open(ocr_p, encoding="utf-8-sig"))
     lay = json.load(open(lay_p, encoding="utf-8"))
-    src = [ln["text"].strip() for ln in ocr.get("lines", []) if ln.get("text", "").strip()]
+
+    # 원본 텍스트의 출처: OCR 경로는 ocr/pN.json, 네이티브 경로는 레이아웃의 source_text.
+    # 네이티브에서 이 분기가 없으면 게이트가 조용히 꺼져 누락을 못 잡는다.
+    if os.path.exists(ocr_p):
+        ocr = json.load(open(ocr_p, encoding="utf-8-sig"))
+        src = [ln["text"].strip() for ln in ocr.get("lines", []) if ln.get("text", "").strip()]
+    else:
+        src = [t.strip() for t in lay.get("source_text", []) if t.strip()]
+        if not src:
+            return None          # 근거가 없으면 1.0 으로 단정하지 않는다
     if not src:
         return 1.0
     out = []
@@ -111,6 +120,18 @@ def text_coverage(work, page):
 # 그 결과일 뿐이므로, 종료 코드는 파생 증상이 아니라 원인을 가리켜야 한다.
 _PRECEDENCE = [EXIT_USAGE, EXIT_EXTRACT, EXIT_RENDERER, EXIT_PACKAGE,
                EXIT_POWERPOINT, EXIT_MISSING, EXIT_VISUAL]
+
+
+def page_unsupported(work, page):
+    """복원하지 못한 객체 목록. 네이티브 경로가 layout 에 남긴다(평가서 B §4.2).
+
+    조용히 빠뜨리는 대신 게이트로 올려서, 무시하려면 명시적으로 --allow-degraded 를
+    쓰게 만든다.
+    """
+    lay_p = f"{work}/layout/p{page}.json"
+    if not os.path.exists(lay_p):
+        return []
+    return json.load(open(lay_p, encoding="utf-8")).get("unsupported", []) or []
 
 
 def evaluate(report, th=None, allow_degraded=False):
@@ -142,6 +163,10 @@ def evaluate(report, th=None, allow_degraded=False):
             fails.append((EXIT_VISUAL, f"{n}쪽 MAE {p['mae']} > {th['max_mae']}"))
         if p.get("text_coverage") is not None and p["text_coverage"] < th["text_coverage"]:
             fails.append((EXIT_MISSING, f"{n}쪽 텍스트 복원율 {p['text_coverage']} < {th['text_coverage']}"))
+        un = p.get("unsupported") or []
+        if len(un) > th["max_unsupported"]:
+            why = "; ".join(sorted({u.get("reason", "?") for u in un}))
+            fails.append((EXIT_MISSING, f"{n}쪽 복원하지 못한 객체 {len(un)}개 -- {why}"))
 
     report["failures"] = [m for _, m in fails]
     if not fails:

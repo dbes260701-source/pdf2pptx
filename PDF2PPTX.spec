@@ -23,7 +23,7 @@ a = Analysis(
         ('licenses', 'licenses'),
     ] + _extra_datas,
     hiddenimports=[
-        'pdfio', 'tables', 'extract', 'build', 'render', 'quality',
+        'pdfio', 'tables', 'extract', 'build', 'render', 'quality', 'native',
         'win32com.client', 'pythoncom',
     ],
     hookspath=[],

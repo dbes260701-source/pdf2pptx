@@ -4,7 +4,7 @@ PDF to PPTX Converter -- 배포용 실행기 (GUI + CLI)
 
 GUI : 인자 없이 실행
 CLI : PDF2PPTX.exe "파일.pdf" [--out 결과.pptx] [--pages 1,3] [--dpi 200] [--font "맑은 고딕"]
-                   [--no-render] [--allow-degraded]
+                   [--no-render] [--allow-degraded] [--no-native] [--no-tables]
 
 품질 게이트를 통과하지 못하면 0이 아닌 종료 코드로 끝난다 (규약은 quality.py 참조).
 무인/배치 실행에서 부실한 변환이 성공으로 집계되지 않게 하기 위한 것이다.
@@ -36,7 +36,7 @@ def respath(*parts):
 
 # --------------------------------------------------------------- pipeline
 def run_pipeline(pdf, out, work, pages=None, dpi=200, font="맑은 고딕", render=True, log=print,
-                 allow_degraded=False):
+                 allow_degraded=False, extra_extract=()):
     """(출력 경로, 종료 코드). 품질 게이트가 실패하면 0이 아닌 코드를 돌려준다 (quality.py 규약)."""
     import extract, build, render as render_mod, quality
 
@@ -60,7 +60,8 @@ def run_pipeline(pdf, out, work, pages=None, dpi=200, font="맑은 고딕", rend
     pg = ["--pages", pages] if pages else []
 
     try:
-        stage("1/3 분석 및 OCR", extract, ["extract", pdf, work, "--dpi", str(dpi)] + pg)
+        stage("1/3 분석 및 OCR", extract,
+              ["extract", pdf, work, "--dpi", str(dpi)] + pg + list(extra_extract))
     except Exception as ex:
         log(f"[오류] 추출 실패: {ex}")
         return out, quality.EXIT_EXTRACT
@@ -110,7 +111,8 @@ def main_cli():
     work = opt("--work", os.path.join(outdir, "work_" + base))
     out, rc = run_pipeline(pdf, out, work, opt("--pages"), int(opt("--dpi", 200)),
                            opt("--font", "맑은 고딕"), "--no-render" not in a,
-                           allow_degraded="--allow-degraded" in a)
+                           allow_degraded="--allow-degraded" in a,
+                           extra_extract=[f for f in ("--no-native", "--no-tables") if f in a])
     print("")
     print(("완료: " if rc == quality.EXIT_OK else f"실패(종료 코드 {rc}): ") + out)
     return rc

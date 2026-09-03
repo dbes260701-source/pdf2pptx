@@ -3,6 +3,7 @@ run.py -- one-shot pipeline:  PDF -> layout -> (overrides) -> PPTX -> PowerPoint
 usage:
   python run.py <pdf> [--work <dir>] [--out <pptx>] [--pages 1,3] [--font NanumGothic]
                       [--no-extract] [--no-render] [--allow-degraded]
+                      [--no-native] [--no-tables]
 Steps:
   1. extract.py  (render, Windows OCR, text/line/rect/photo/image detection)  -> work/layout/pN.json + work/debug/pN_boxes.png
   2. build.py    (layout + work/overrides/pN.json -> pptx)
@@ -30,8 +31,11 @@ def run(cmd, check=True):
         sys.exit(rc)
     return rc
 
+# extract 로 그대로 넘기는 플래그
+passthru = [f for f in ("--no-native", "--no-tables") if f in sys.argv]
 if "--no-extract" not in sys.argv:
-    run([sys.executable, os.path.join(HERE, "extract.py"), pdf, work] + (["--pages", pages] if pages else []))
+    run([sys.executable, os.path.join(HERE, "extract.py"), pdf, work]
+        + (["--pages", pages] if pages else []) + passthru)
 run([sys.executable, os.path.join(HERE, "build.py"), work, out, "--font", font] + (["--pages", pages] if pages else []))
 
 if "--no-render" in sys.argv:

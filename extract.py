@@ -279,6 +279,45 @@ def detect_images(img, occupied):
             if merged: break
     return [dict(type="image", bbox=[int(v) for v in b]) for b in boxes]
 
+DEBUG_COLORS = dict(text=(0,0,255), rect=(0,180,0), line=(255,0,255),
+                    image=(255,128,0), table=(0,215,255))
+
+def write_debug(work, i, img, layout):
+    """감지 결과 오버레이. 미지원 객체는 빨간 점선 대신 굵은 테두리로 눈에 띄게 표시한다."""
+    os.makedirs(f"{work}/debug", exist_ok=True)
+    dbg = img.copy()
+    for e in layout["elements"]:
+        b = e["bbox"]; c = DEBUG_COLORS.get(e["type"], (128,128,128))
+        cv2.rectangle(dbg, (int(b[0]),int(b[1])), (int(b[2]),int(b[3])), c, 2)
+        cv2.putText(dbg, e.get("id",""), (int(b[0]), int(b[1])-3), cv2.FONT_HERSHEY_SIMPLEX, 0.5, c, 1)
+    for u in layout.get("unsupported", []):
+        b = u["bbox"]
+        cv2.rectangle(dbg, (int(b[0]),int(b[1])), (int(b[2]),int(b[3])), (0,0,255), 4)
+    cv2.imwrite(f"{work}/debug/p{i}_boxes.png", dbg)
+
+def native_page(pdf, work, i, dpi, W, H, img):
+    """네이티브 객체로 레이아웃을 만들고, 표는 렌더 이미지에서 이어서 검출한다."""
+    import native
+    pt_w, pt_h = pdfio.page_size(pdf, i)
+    els, unsupported = native.page_elements(pdf, i, dpi, W, H, f"{work}/assets")
+    tables_found = []
+    if "--no-tables" not in sys.argv:
+        try:
+            tables_found = tbl.detect_tables(img, native.text_lines_for_tables(pdf, i, dpi))
+        except Exception as ex:
+            print(f"  표 검출 건너뜀: {ex}")
+    for k, t in enumerate(tables_found):
+        t["id"] = f"tb{k}"; t["name"] = f"table-{k+1}"
+        t["source_method"] = "cv"
+        # 표는 그 안의 텍스트·선을 대신 그리므로 가장 위에 올린다
+        t["z"] = max([e.get("z", 0) for e in els], default=0) + 1
+    # 원본 텍스트를 남겨 둔다. 네이티브 모드에는 OCR json 이 없어서 이게 없으면
+    # quality.text_coverage() 의 누락 탐지 게이트가 조용히 꺼진다.
+    src_text = [ln["text"] for ln in native.text_lines_for_tables(pdf, i, dpi) if ln["text"].strip()]
+    return dict(page=i, width=W, height=H, pt_w=pt_w, pt_h=pt_h, dpi=dpi,
+                source_method="native", elements=els + tables_found,
+                unsupported=unsupported, source_text=src_text)
+
 def main():
     pdf, work = sys.argv[1], sys.argv[2]
     dpi = 200; pages = None
@@ -288,10 +327,24 @@ def main():
     if pages is None: pages = list(range(1, npages+1))
     info = render(pdf, work, dpi, pages)
     os.makedirs(f"{work}/layout", exist_ok=True); os.makedirs(f"{work}/debug", exist_ok=True)
+    use_native = ("--no-native" not in sys.argv) and pdfio.native_available()
     for pi in info:
         i = pi["page"]
         img = cv2.imread(f"{work}/pages/p{i}.png")
         H, W = img.shape[:2]
+
+        # born-digital 페이지는 렌더링 결과를 다시 알아맞히지 않고 PDF 객체를 그대로 쓴다.
+        # 글자 내용·글꼴 크기·색·그리기 순서가 추정이 아니라 원본 값이 된다 (ROADMAP R1).
+        if use_native and pdfio.has_native_text(pdf, i):
+            layout = native_page(pdf, work, i, dpi, W, H, img)
+            json.dump(layout, open(f"{work}/layout/p{i}.json","w",encoding="utf-8"),
+                      ensure_ascii=False, indent=1)
+            write_debug(work, i, img, layout)
+            n_un = len(layout.get("unsupported", []))
+            print(f"page {i}: native  요소 {len(layout['elements'])}개"
+                  + (f", 미지원 {n_un}개" if n_un else ""))
+            continue
+
         ocr = run_ocr(work, i)
         elements = []; eid = 0
         textmask = np.zeros((H,W), np.uint8)
@@ -341,13 +394,8 @@ def main():
         layout = dict(page=i, width=W, height=H, pt_w=pi["pt_w"], pt_h=pi["pt_h"], dpi=dpi,
                       elements=rects + images + lines + elements + tables_found)
         json.dump(layout, open(f"{work}/layout/p{i}.json","w",encoding="utf-8"), ensure_ascii=False, indent=1)
-        dbg = img.copy()
-        for e in layout["elements"]:
-            b = e["bbox"]; c = dict(text=(0,0,255), rect=(0,180,0), line=(255,0,255), image=(255,128,0), table=(0,215,255))[e["type"]]
-            cv2.rectangle(dbg, (int(b[0]),int(b[1])), (int(b[2]),int(b[3])), c, 2)
-            cv2.putText(dbg, e["id"], (int(b[0]), int(b[1])-3), cv2.FONT_HERSHEY_SIMPLEX, 0.5, c, 1)
-        cv2.imwrite(f"{work}/debug/p{i}_boxes.png", dbg)
-        print(f"page {i}: text={len(elements)} rect={len(rects)} line={len(lines)} image={len(images)} table={len(tables_found)}")
+        write_debug(work, i, img, layout)
+        print(f"page {i}: ocr  text={len(elements)} rect={len(rects)} line={len(lines)} image={len(images)} table={len(tables_found)}")
 
 if __name__ == "__main__":
     main()

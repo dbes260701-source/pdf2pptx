@@ -75,7 +75,8 @@ def main():
                   package_error=quality.validate_package(pptx), pages=[])
 
     for k, pg in enumerate(layout_pages, start=1):
-        rec = dict(page=pg, text_coverage=quality.text_coverage(work, pg))
+        rec = dict(page=pg, text_coverage=quality.text_coverage(work, pg),
+                   unsupported=quality.page_unsupported(work, pg))
         o = cv2.imread(f"{work}/pages/p{pg}.png")
         r = cv2.imread(f"{work}/render/s{k}.png") if k <= n else None
         if r is not None:
