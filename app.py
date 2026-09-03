@@ -92,8 +92,9 @@ def check_ocr():
     ps = ("[Windows.Media.Ocr.OcrEngine, Windows.Foundation, ContentType=WindowsRuntime] | Out-Null; "
           "[Windows.Media.Ocr.OcrEngine]::AvailableRecognizerLanguages | ForEach-Object { $_.LanguageTag }")
     try:
-        r = subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", ps],
-                           capture_output=True, text=True, timeout=60)
+        import procutil
+        r = procutil.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", ps],
+                         capture_output=True, text=True, timeout=60)
         tags = [t.strip() for t in r.stdout.split()]
         return any(t.lower().startswith("ko") for t in tags), tags
     except Exception:

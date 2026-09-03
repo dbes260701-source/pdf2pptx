@@ -23,9 +23,9 @@ def export_libreoffice(pptx, outdir, W, H):
     """fallback when PowerPoint is unavailable: pptx -> pdf -> page images"""
     soffice = find_soffice()
     if not soffice: raise RuntimeError("PowerPoint도 LibreOffice도 찾을 수 없어 렌더링 검수를 건너뜁니다.")
-    import subprocess, glob as _glob, pdfio
-    subprocess.run([soffice, "--headless", "--convert-to", "pdf", "--outdir", outdir, os.path.abspath(pptx)],
-                   check=True, capture_output=True, timeout=600)
+    import glob as _glob, pdfio, procutil
+    procutil.run([soffice, "--headless", "--convert-to", "pdf", "--outdir", outdir, os.path.abspath(pptx)],
+                 check=True, capture_output=True, timeout=600)
     pdfs = _glob.glob(os.path.join(outdir, "*.pdf"))
     if not pdfs: raise RuntimeError("LibreOffice PDF 변환에 실패했습니다.")
     n = pdfio.page_count(pdfs[0])

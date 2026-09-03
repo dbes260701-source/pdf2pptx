@@ -37,7 +37,7 @@ pdf2pptx = "app:main_cli"
 [tool.setuptools]
 # 최상위 평면 모듈 구조. src/ 레이아웃 이전은 docs/ROADMAP.md 의 R8 항목.
 py-modules = ["app", "run", "extract", "build", "render", "quality", "pdfio",
-              "native", "ppt_validate", "tables", "analyze"]
+              "native", "ppt_validate", "procutil", "tables", "analyze"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

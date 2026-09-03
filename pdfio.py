@@ -104,10 +104,27 @@ def _obj_text(obj, textpage):
 
 
 def _obj_font(obj):
+    """(실효 글꼴 크기 pt, 글꼴 이름, 굵기).
+
+    FPDFTextObj_GetFontSize() 는 **행렬을 적용하기 전** 크기다. PDF 는 글꼴 크기를
+    1 로 두고 행렬로 키우거나(연구노트: 1pt x 22.0), 반대로 큰 값을 두고 행렬로
+    줄이는(육아휴직: 267pt x 0.12) 방식을 흔히 쓴다. 그 값을 그대로 쓰면 글자가
+    22배 작거나 8배 크게 나온다 -- 실제로 그 버그가 있었다.
+    세로 배율 hypot(b, d) 를 곱해야 화면에 찍히는 크기가 된다.
+    """
     import ctypes
+    import math
     import pypdfium2.raw as raw
     size = ctypes.c_float()
     fs = float(size.value) if raw.FPDFTextObj_GetFontSize(obj, ctypes.byref(size)) else None
+    if fs is not None:
+        try:
+            m = obj.get_matrix()
+            vscale = math.hypot(m.b, m.d)
+            if vscale > 0:
+                fs *= vscale
+        except Exception:
+            pass                            # 행렬을 못 읽으면 원래 값을 쓴다
     name = ""
     font = raw.FPDFTextObj_GetFont(obj)
     if font:
@@ -208,30 +225,48 @@ def native_objects(path, index, want_image_bytes=True):
 
 
 def native_text_stats(path, index):
-    """네이티브 텍스트가 쓸 만한지 판단할 근거. (문자 수, 텍스트 객체 수)"""
+    """네이티브 텍스트가 쓸 만한지 판단할 근거. (문자 수, 텍스트 객체 수, 해독된 객체 수)
+
+    셋째 값이 중요하다. 서브셋 글꼴에 ToUnicode 매핑이 없으면 텍스트 객체는 있는데
+    글자를 못 읽어 빈 문자열이 나온다(실측: 어떤 안내문은 텍스트 객체 95개 중
+    대부분이 빈 문자열). 그대로 네이티브 경로를 타면 글자가 통째로 사라진다.
+    """
     if not native_available():
-        return 0, 0
+        return 0, 0, 0
     import pypdfium2 as pdfium
     doc = pdfium.PdfDocument(path)
     try:
         page = doc[index - 1]
         tp = page.get_textpage()
         n_chars = tp.count_chars()
+        n_text = n_ok = 0
+        for o in page.get_objects():
+            if o.type != OBJ_TEXT:
+                continue
+            n_text += 1
+            if _obj_text(o, tp).strip():
+                n_ok += 1
         tp.close()
-        n_text = sum(1 for o in page.get_objects() if o.type == OBJ_TEXT)
-        return int(n_chars), int(n_text)
+        return int(n_chars), int(n_text), int(n_ok)
     finally:
         doc.close()
 
 
-# 이만큼의 글자가 실제 텍스트 객체로 들어 있으면 born-digital 로 보고 OCR 을 건너뛴다.
+# 이만큼의 글자가 실제 텍스트 객체로 들어 있으면 born-digital 로 본다.
 NATIVE_MIN_CHARS = 20
+# 텍스트 객체 중 이 비율 이상이 실제로 해독되어야 네이티브 경로를 쓴다.
+# 미달이면 글자를 잃느니 OCR 로 넘긴다.
+NATIVE_MIN_DECODED_RATIO = 0.80
 
 
-def has_native_text(path, index, min_chars=NATIVE_MIN_CHARS):
+def has_native_text(path, index, min_chars=NATIVE_MIN_CHARS,
+                    min_decoded_ratio=NATIVE_MIN_DECODED_RATIO):
     """이 페이지를 네이티브 경로로 처리해도 되는지."""
-    n_chars, n_text = native_text_stats(path, index)
-    return n_chars >= min_chars and n_text > 0
+    n_chars, n_text, n_ok = native_text_stats(path, index)
+    if n_chars < min_chars or n_text <= 0:
+        return False
+    # 글자를 못 읽는 객체가 많으면 네이티브로 가면 안 된다 (ToUnicode 없는 서브셋 글꼴)
+    return (n_ok / n_text) >= min_decoded_ratio
 
 
 def pt_to_px(bbox_pt, page_h_pt, dpi):

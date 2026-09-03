@@ -11,6 +11,7 @@ Produces:
 import sys, os, json, subprocess, math
 import numpy as np, cv2
 import pdfio
+import procutil
 import tables as tbl
 
 def respath(*parts):
@@ -33,7 +34,7 @@ def run_ocr(work, i):
     os.makedirs(f"{work}/ocr", exist_ok=True)
     out = f"{work}/ocr/p{i}.json"
     if not os.path.exists(out):
-        subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File",
+        procutil.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File",
                         os.path.join(HERE, "winocr.ps1"), "-ImagePath", os.path.abspath(f"{work}/pages/p{i}.png"),
                         "-OutJson", os.path.abspath(out)], check=True, capture_output=True)
     return json.load(open(out, encoding="utf-8-sig"))
@@ -96,10 +97,18 @@ def group_lines(lines):
         groups.append(g)
     return groups
 
-# 괘선으로 인정할 최대 두께(200dpi 기준 픽셀). detect_rects 의 최소 변 길이(12)와 맞물려
-# 있어서 이보다 작아지면 그 사이 두께가 어느 검출기에도 안 잡히는 사각지대가 생긴다.
-# 실제로 11px 괘선이 line(<=6)에도 rect(>=12)에도 걸리지 않고 사라지는 버그가 있었다.
-LINE_MAX_THICK_200DPI = 11
+# 괘선으로 인정할 최대 두께(200dpi 기준 픽셀).
+#
+# 한때 이 값을 11 로 올린 적이 있다. detect_rects 의 최소 변 길이가 12 라서 두께 7~11 이
+# 어느 검출기에도 안 잡히는 사각지대였고, 실제로 10px 괘선이 사라지는 사례가 있었다.
+# 그런데 합성 픽스처에서만 검증하고 올린 것이라 실제 문서에서 역효과가 났다.
+# 스캔 보고서 1쪽에서 선 검출이 8개 -> 15개로 늘면서 글자·그래픽 일부를 선으로 오인했고,
+# 그 여파로 이미지 영역까지 바뀌어 SSIM 0.8189 -> 0.8072, 최악 타일 0.4771 -> 0.4371 로
+# 오히려 나빠졌다. 그래서 원래 값으로 되돌린다.
+#
+# 두께 7~11 사각지대는 아직 남아 있다. 넓히려면 합성 픽스처가 아니라 실제 문서군
+# 코퍼스(tests/corpus/)로 오검출이 늘지 않는지 확인한 뒤에 해야 한다.
+LINE_MAX_THICK_200DPI = 6
 LINE_MIN_LEN_200DPI = 60
 LINE_MIN_ASPECT = 8          # 길이/두께. 이보다 뭉툭하면 선이 아니라 작은 덩어리로 본다
 

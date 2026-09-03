@@ -82,8 +82,37 @@ def test_path_fill_colour_is_exact(sample_pdf):
 
 
 def test_native_text_detection(sample_pdf):
-    n_chars, n_text = pdfio.native_text_stats(sample_pdf, 1)
+    n_chars, n_text, n_ok = pdfio.native_text_stats(sample_pdf, 1)
     assert n_chars >= pdfio.NATIVE_MIN_CHARS and n_text == 1
+    assert n_ok == 1, "글자를 해독하지 못했다"
+    assert pdfio.has_native_text(sample_pdf, 1)
+
+
+def test_font_size_accounts_for_text_matrix(sample_pdf):
+    """FPDFTextObj_GetFontSize 는 행렬 적용 전 값이다. 그대로 쓰면 크기가 몇 배씩 틀어진다.
+
+    실측: 어떤 PDF 는 267pt x 0.12 = 32pt, 어떤 PDF 는 1pt x 22.0 = 22pt 로 쓴다.
+    픽스처는 행렬 배율 1 이라 보정 전후가 같지만, bbox 높이와 어긋나지 않는지 확인한다.
+    """
+    txt = [o for o in pdfio.native_objects(sample_pdf, 1) if o["kind"] == "text"][0]
+    x0, y0, x1, y1 = txt["bbox_pt"]
+    h = y1 - y0
+    assert 0.5 * txt["font_size"] <= h <= 1.6 * txt["font_size"], (
+        f"글꼴 크기 {txt['font_size']} 가 실제 높이 {h} 와 동떨어졌다 -- 행렬 보정 확인")
+
+
+def test_page_is_skipped_when_glyphs_cannot_be_decoded(monkeypatch, sample_pdf):
+    """ToUnicode 가 없는 서브셋 글꼴은 텍스트 객체가 있어도 글자를 못 읽는다.
+
+    실측: 어떤 안내문은 텍스트 객체 95개 중 7개(7%)만 해독됐다. 그대로 네이티브로
+    가면 글자가 통째로 사라지므로 OCR 로 넘겨야 한다.
+    """
+    monkeypatch.setattr(pdfio, "native_text_stats",
+                        lambda *a, **k: (100, 95, 7))       # 해독률 7%
+    assert not pdfio.has_native_text(sample_pdf, 1)
+
+    monkeypatch.setattr(pdfio, "native_text_stats",
+                        lambda *a, **k: (100, 95, 90))      # 해독률 95%
     assert pdfio.has_native_text(sample_pdf, 1)
 
 
