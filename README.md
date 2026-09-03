@@ -16,6 +16,7 @@ Windows 로컬에서 도는 **OCR/CV 기반 문서 레이아웃 복원 도구**�
   [docs/ROADMAP.md](docs/ROADMAP.md) 마지막 절에 있다.
 
 외부 평가 두 건에 대한 항목별 대응은 [docs/EVALUATION-RESPONSE.md](docs/EVALUATION-RESPONSE.md) 참조.
+기여자와 AI 도구 사용 내역은 [CONTRIBUTORS.md](CONTRIBUTORS.md) 참조.
 
 ## 실행
     python run.py "<pdf 경로>"            # 추출 → 빌드 → PowerPoint 렌더링 → 비교 + 품질 게이트
