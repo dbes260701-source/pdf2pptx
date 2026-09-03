@@ -96,25 +96,40 @@ def group_lines(lines):
         groups.append(g)
     return groups
 
-def detect_lines(img, textmask):
+# 괘선으로 인정할 최대 두께(200dpi 기준 픽셀). detect_rects 의 최소 변 길이(12)와 맞물려
+# 있어서 이보다 작아지면 그 사이 두께가 어느 검출기에도 안 잡히는 사각지대가 생긴다.
+# 실제로 11px 괘선이 line(<=6)에도 rect(>=12)에도 걸리지 않고 사라지는 버그가 있었다.
+LINE_MAX_THICK_200DPI = 11
+LINE_MIN_LEN_200DPI = 60
+LINE_MIN_ASPECT = 8          # 길이/두께. 이보다 뭉툭하면 선이 아니라 작은 덩어리로 본다
+
+def _scale(px, dpi):
+    """200dpi 기준으로 잡은 픽셀 임계값을 실제 dpi 로 환산한다."""
+    return max(1, int(round(px * dpi / 200.0)))
+
+def detect_lines(img, textmask, dpi=200):
     """long thin horizontal/vertical lines -> line elements"""
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     nonwhite = (gray < 232).astype(np.uint8)
     nonwhite[textmask > 0] = 0
+    max_thick = _scale(LINE_MAX_THICK_200DPI, dpi)
+    min_len = _scale(LINE_MIN_LEN_200DPI, dpi)
     out = []
     for orient in ("h", "v"):
-        k = cv2.getStructuringElement(cv2.MORPH_RECT, (60,1) if orient=="h" else (1,60))
+        k = cv2.getStructuringElement(cv2.MORPH_RECT, (min_len,1) if orient=="h" else (1,min_len))
         m = cv2.morphologyEx(nonwhite, cv2.MORPH_OPEN, k)
         n, lab, stats, _ = cv2.connectedComponentsWithStats(m, 8)
         for c in range(1, n):
             x,y,w,h,a = stats[c]
-            if orient=="h" and (h > 6 or w < 60): continue
-            if orient=="v" and (w > 6 or h < 60): continue
+            thick, length = (h, w) if orient == "h" else (w, h)
+            if thick > max_thick or length < min_len: continue
+            if length < LINE_MIN_ASPECT * thick: continue
             col = np.median(img[lab==c].reshape(-1,3), axis=0)
+            near, far = _scale(3, dpi), _scale(6, dpi)   # 선 양옆 배경을 재는 띠
             if orient=="h":
-                nb = np.concatenate([img[max(0,y-6):max(0,y-3), x:x+w], img[y+h+3:y+h+6, x:x+w]])
+                nb = np.concatenate([img[max(0,y-far):max(0,y-near), x:x+w], img[y+h+near:y+h+far, x:x+w]])
             else:
-                nb = np.concatenate([img[y:y+h, max(0,x-6):max(0,x-3)], img[y:y+h, x+w+3:x+w+6]])
+                nb = np.concatenate([img[y:y+h, max(0,x-far):max(0,x-near)], img[y:y+h, x+w+near:x+w+far]])
             if nb.size and nb.reshape(-1,3).std(axis=0).mean() > 22: continue
             if nb.size and (nb.reshape(-1,3).mean() - col.mean()) < 18: continue
             out.append(dict(type="line", bbox=[int(x),int(y),int(x+w),int(y+h)],
@@ -305,7 +320,7 @@ def main():
             eid += 1
             cv2.rectangle(textmask, (int(x0)-2,int(y0)-2), (int(x1)+2,int(y1)+2), 255, -1)
         rects = detect_rects(img, textmask)
-        lines = detect_lines(img, textmask)
+        lines = detect_lines(img, textmask, dpi)
         rects += detect_frames(lines, img)
         rects.sort(key=lambda r: -(r["bbox"][2]-r["bbox"][0])*(r["bbox"][3]-r["bbox"][1]))
         occupied = textmask.copy()
