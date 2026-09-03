@@ -1,0 +1,8 @@
+# 재현 가능한 런타임 환경 (개발/CI 검증 조합: Python 3.12.10 / Windows 11)
+# 배포 exe 에 들어가는 것과 동일한 집합. AGPL 인 PyMuPDF 는 포함하지 않는다.
+pypdfium2==5.13.0
+python-pptx==1.0.2
+opencv-python-headless==5.0.0.93
+numpy==2.4.6
+pillow==12.3.0
+pywin32==312 ; sys_platform == "win32"

@@ -1,0 +1,42 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ---- PyInstaller 빌드 산출물 ----
+build/
+dist/
+build_log*.txt
+*.exe
+
+# ---- 파이프라인 작업 디렉터리 ----
+# extract/build/render 가 만드는 중간 산출물. 재생성 가능하므로 추적하지 않는다.
+work/
+work_*/
+
+# ---- 변환 결과물 ----
+*.pptx
+!tests/fixtures/**/*.pptx
+
+# ---- 회귀 테스트 산출물 ----
+tests/output/
+tests/_report/
+
+# ---- 사내 문서 (평가서 §8.5: 사설 PDF는 커밋 금지) ----
+# 저장소 루트의 로컬 코퍼스만. tests/corpus/ 는 매니페스트뿐이라 추적한다.
+/corpus/
+*.pdf
+!tests/fixtures/**/*.pdf
+# 실물 경로가 담기므로 예제(manifest.example.json)만 커밋한다.
+tests/corpus/manifest.json
+
+# ---- OS / 편집기 ----
+Thumbs.db
+.DS_Store
+.idea/
+.vscode/

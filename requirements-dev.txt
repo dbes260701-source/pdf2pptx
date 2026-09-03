@@ -1,0 +1,6 @@
+-r requirements.txt
+pytest==8.3.4
+pytest-cov==6.0.0
+pyinstaller==6.22.2
+# 백엔드 대조 전용. AGPL-3.0 이므로 이 파일로 만든 환경에서는 exe 를 배포하지 않는다.
+# pymupdf==1.28.2

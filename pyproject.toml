@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf2pptx"
+version = "1.0.0"
+description = "스캔/이미지형 PDF를 편집 가능한 PowerPoint 개체로 복원하는 로컬 파이프라인"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "LICENSE" }
+
+# 배포 exe 는 pypdfium2(BSD-3-Clause / Apache-2.0)만 사용한다.
+# AGPL 인 PyMuPDF 는 런타임 의존성이 아니며, 개발 중 백엔드 비교용으로만 [dev] 에 둔다.
+dependencies = [
+    "pypdfium2>=5.13,<6",
+    "python-pptx>=1.0.2,<2",
+    "opencv-python-headless>=4.10,<6",
+    "numpy>=2.0,<3",
+    "pillow>=10.4,<13",
+    "pywin32>=306 ; sys_platform == 'win32'",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "pyinstaller>=6.10,<7",
+]
+# 개발 환경에서만. PDF2PPTX_BACKEND=pymupdf 로 전환해 pypdfium2 와 결과를 대조할 때 쓴다.
+# AGPL-3.0 이므로 이 그룹을 포함한 빌드는 배포 금지.
+pymupdf = ["pymupdf>=1.24"]
+
+[project.scripts]
+pdf2pptx = "app:main_cli"
+
+[tool.setuptools]
+# 최상위 평면 모듈 구조. src/ 레이아웃 이전은 docs/ROADMAP.md 의 R8 항목.
+py-modules = ["app", "run", "extract", "build", "render", "quality", "pdfio", "tables", "analyze"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: OCR/렌더링이 필요해 느린 테스트",
+    "needs_renderer: PowerPoint 또는 LibreOffice 가 있어야 하는 테스트",
+    "needs_ocr: 한국어 Windows OCR 언어 팩이 있어야 하는 테스트",
+]

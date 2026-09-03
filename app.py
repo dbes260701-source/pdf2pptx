@@ -3,7 +3,11 @@
 PDF to PPTX Converter -- 배포용 실행기 (GUI + CLI)
 
 GUI : 인자 없이 실행
-CLI : PDF2PPTX.exe "파일.pdf" [--out 결과.pptx] [--pages 1,3] [--dpi 200] [--font "맑은 고딕"] [--no-render]
+CLI : PDF2PPTX.exe "파일.pdf" [--out 결과.pptx] [--pages 1,3] [--dpi 200] [--font "맑은 고딕"]
+                   [--no-render] [--allow-degraded]
+
+품질 게이트를 통과하지 못하면 0이 아닌 종료 코드로 끝난다 (규약은 quality.py 참조).
+무인/배치 실행에서 부실한 변환이 성공으로 집계되지 않게 하기 위한 것이다.
 """
 import os, sys, io, threading, traceback, queue, subprocess
 
@@ -31,32 +35,53 @@ def respath(*parts):
 
 
 # --------------------------------------------------------------- pipeline
-def run_pipeline(pdf, out, work, pages=None, dpi=200, font="맑은 고딕", render=True, log=print):
-    import extract, build, render as render_mod
+def run_pipeline(pdf, out, work, pages=None, dpi=200, font="맑은 고딕", render=True, log=print,
+                 allow_degraded=False):
+    """(출력 경로, 종료 코드). 품질 게이트가 실패하면 0이 아닌 코드를 돌려준다 (quality.py 규약)."""
+    import extract, build, render as render_mod, quality
 
     def stage(name, mod, argv):
-        log(f"\n[{name}] 시작")
+        log("")
+        log(f"[{name}] 시작")
         old = sys.argv
         sys.argv = argv
         try:
-            mod.main()
+            rc = mod.main()
         finally:
             sys.argv = old
         log(f"[{name}] 완료")
+        return rc
+
+    if not os.path.exists(pdf):
+        log(f"[오류] 입력 PDF를 찾을 수 없습니다: {pdf}")
+        return out, quality.EXIT_USAGE
 
     os.makedirs(work, exist_ok=True)
     pg = ["--pages", pages] if pages else []
 
-    stage("1/3 분석 및 OCR", extract, ["extract", pdf, work, "--dpi", str(dpi)] + pg)
-    stage("2/3 PPTX 생성", build, ["build", work, out, "--font", font] + pg)
-    if render:
-        try:
-            stage("3/3 렌더링 검수", render_mod, ["render", out, work] + pg)
-            log(f"비교 이미지: {os.path.join(work, 'compare')}")
-        except Exception as ex:
-            log(f"[3/3 렌더링 검수] 건너뜀: {ex}")
-            log("PowerPoint 또는 LibreOffice가 설치되어 있으면 검수 이미지를 만들 수 있습니다.")
-    return out
+    try:
+        stage("1/3 분석 및 OCR", extract, ["extract", pdf, work, "--dpi", str(dpi)] + pg)
+    except Exception as ex:
+        log(f"[오류] 추출 실패: {ex}")
+        return out, quality.EXIT_EXTRACT
+    try:
+        stage("2/3 PPTX 생성", build, ["build", work, out, "--font", font] + pg)
+    except Exception as ex:
+        log(f"[오류] PPTX 생성 실패: {ex}")
+        return out, quality.EXIT_PACKAGE
+
+    if not render:
+        # 명시적 opt-out. 게이트가 돌지 않았다는 사실을 결과와 함께 분명히 남긴다.
+        log("[경고] 렌더링 검수를 건너뛰어 품질 게이트가 실행되지 않았습니다. 결과를 직접 확인하세요.")
+        return out, quality.EXIT_OK
+
+    rc = stage("3/3 렌더링 검수", render_mod,
+               ["render", out, work] + pg + (["--allow-degraded"] if allow_degraded else []))
+    if rc:
+        log(f"[품질 게이트 실패] 종료 코드 {rc}. 자세한 내용: {os.path.join(work, 'report.json')}")
+    else:
+        log(f"비교 이미지: {os.path.join(work, 'compare')}")
+    return out, rc or quality.EXIT_OK
 
 
 def check_ocr():
@@ -74,6 +99,7 @@ def check_ocr():
 
 # --------------------------------------------------------------- CLI
 def main_cli():
+    import quality
     a = sys.argv[1:]
     def opt(k, d=None):
         return a[a.index(k) + 1] if k in a else d
@@ -82,9 +108,12 @@ def main_cli():
     outdir = os.path.dirname(os.path.abspath(pdf))
     out = opt("--out", os.path.join(outdir, base + "_편집가능.pptx"))
     work = opt("--work", os.path.join(outdir, "work_" + base))
-    run_pipeline(pdf, out, work, opt("--pages"), int(opt("--dpi", 200)),
-                 opt("--font", "맑은 고딕"), "--no-render" not in a)
-    print("\n완료:", out)
+    out, rc = run_pipeline(pdf, out, work, opt("--pages"), int(opt("--dpi", 200)),
+                           opt("--font", "맑은 고딕"), "--no-render" not in a,
+                           allow_degraded="--allow-degraded" in a)
+    print("")
+    print(("완료: " if rc == quality.EXIT_OK else f"실패(종료 코드 {rc}): ") + out)
+    return rc
 
 
 # --------------------------------------------------------------- GUI
@@ -106,6 +135,7 @@ def main_gui():
     dpi_var = tk.StringVar(value="200")
     font_var = tk.StringVar(value="맑은 고딕")
     render_var = tk.BooleanVar(value=True)
+    degraded_var = tk.BooleanVar(value=False)
     open_var = tk.BooleanVar(value=True)
     msgs = queue.Queue()
     state = {"running": False}
@@ -150,9 +180,15 @@ def main_gui():
             if not ok:
                 log("경고: 한국어 Windows OCR을 찾지 못했습니다. 설치된 언어:", tags or "없음")
                 log("설정 > 시간 및 언어 > 언어에서 한국어 선택 기능(OCR)을 설치하세요.")
-            run_pipeline(pdf, out, work, pages_var.get().strip() or None,
-                         int(dpi_var.get() or 200), font_var.get(), render_var.get(), log)
-            log("\n===== 변환 완료 =====")
+            _, rc = run_pipeline(pdf, out, work, pages_var.get().strip() or None,
+                                 int(dpi_var.get() or 200), font_var.get(), render_var.get(), log,
+                                 allow_degraded=degraded_var.get())
+            log("")
+            if rc:
+                log(f"===== 변환 완료 · 품질 게이트 실패 (코드 {rc}) =====")
+                log("파일은 만들어졌지만 원본과 충분히 일치하지 않습니다. 비교 이미지를 확인하세요.")
+            else:
+                log("===== 변환 완료 =====")
             log(f"결과 파일: {out}")
             if open_var.get():
                 os.startfile(out)
@@ -201,7 +237,8 @@ def main_gui():
     ttk.Label(opts, text="폰트").pack(side="left")
     ttk.Combobox(opts, textvariable=font_var, values=["맑은 고딕", "NanumGothic", "Noto Sans KR"], width=12,
                  state="readonly").pack(side="left", padx=(6, 16))
-    ttk.Checkbutton(opts, text="렌더링 검수 이미지 생성", variable=render_var).pack(side="left", padx=(0, 16))
+    ttk.Checkbutton(opts, text="렌더링 검수", variable=render_var).pack(side="left", padx=(0, 12))
+    ttk.Checkbutton(opts, text="품질 미달 허용", variable=degraded_var).pack(side="left", padx=(0, 12))
     ttk.Checkbutton(opts, text="완료 후 파일 열기", variable=open_var).pack(side="left")
 
     btn_run = ttk.Button(frm, text="변환 시작", command=start)
@@ -227,6 +264,6 @@ def main_gui():
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and not sys.argv[1].startswith("-"):
-        main_cli()
+        sys.exit(main_cli())
     else:
         main_gui()

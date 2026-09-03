@@ -1,0 +1,27 @@
+{
+  "_comment": "PDF 실물은 PDF2PPTX_CORPUS 가 가리키는 디렉터리에서 찾는다. 해시로 동일본임을 확인한다.",
+  "documents": [
+    {
+      "file": "scanned/2026-01-monthly-report.pdf",
+      "sha256": "<실물 파일의 sha256>",
+      "category": "scanned",
+      "pages": [1, 2],
+      "expect": {
+        "page_ssim": 0.72,
+        "tile_ssim": 0.30,
+        "text_coverage": 0.85
+      },
+      "known_limitations": [
+        "2쪽 지도 위 표는 괘선이 흐려 자동 검출되지 않는다 (overrides 로 수동 지정)"
+      ]
+    },
+    {
+      "file": "table/quarterly-figures.pdf",
+      "sha256": "<실물 파일의 sha256>",
+      "category": "table",
+      "pages": [1],
+      "expect": { "page_ssim": 0.80, "tile_ssim": 0.40, "text_coverage": 0.95 },
+      "known_limitations": []
+    }
+  ]
+}
