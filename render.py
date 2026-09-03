@@ -1,6 +1,6 @@
 """
 render.py -- render PPTX slides via PowerPoint COM, build comparison images, and gate on quality
-usage: python render.py <pptx> <workdir> [--pages 1,2] [--allow-degraded]
+usage: python render.py <pptx> <workdir> [--pages 1,2] [--allow-degraded] [--no-ppt-check]
 Outputs: work/render/sN.png, work/compare/cN.png (original | render), work/compare/oN.png (overlay),
          work/report.json (per-page SSIM / worst-tile / MAE / text coverage + pass|degraded|fail)
 Exit codes: quality.py 참조. 검수 실패는 더 이상 0을 반환하지 않는다.
@@ -8,6 +8,7 @@ Exit codes: quality.py 참조. 검수 실패는 더 이상 0을 반환하지 않
 import sys, os, glob
 import cv2, numpy as np
 import quality
+import ppt_validate
 
 def find_soffice():
     import shutil
@@ -73,6 +74,17 @@ def main():
     report = dict(pptx=os.path.abspath(pptx), work=os.path.abspath(work), renderer=renderer,
                   page_count=len(layout_pages), slide_count=n,
                   package_error=quality.validate_package(pptx), pages=[])
+
+    # PowerPoint 로 열고 저장하고 다시 열어 내용이 보존되는지 (ROADMAP R4).
+    # 패키지 검증만으로는 PowerPoint 가 복구 없이 여는지 알 수 없다.
+    if "--no-ppt-check" in sys.argv:
+        report["powerpoint"] = dict(status="skipped", differences=[], error=None)
+    else:
+        report["powerpoint"] = ppt_validate.roundtrip(pptx, f"{work}/ppt_check")
+    pw = report["powerpoint"]
+    if pw["status"] == "unavailable":
+        print("PowerPoint 왕복 검증 건너뜀:", pw.get("error") or "PowerPoint 없음")
+        print("  -> 이 결과로 PowerPoint 호환을 주장할 수 없습니다.")
 
     for k, pg in enumerate(layout_pages, start=1):
         rec = dict(page=pg, text_coverage=quality.text_coverage(work, pg),

@@ -23,6 +23,7 @@ born-digital PDF 는 PDF 객체를 직접 읽고, 스캔본은 OCR/CV 로 복원
     python run.py "<pdf>" --no-extract    # overrides 수정 후 재빌드/재렌더링만
     python run.py "<pdf>" --pages 1,2     # 일부 페이지만
     python run.py "<pdf>" --allow-degraded  # 품질 미달이어도 0으로 종료(사유는 보고서에 남음)
+    python run.py "<pdf>" --no-ppt-check    # PowerPoint 왕복 검증 생략(빠름)
 
 ## 두 가지 추출 경로
 
@@ -82,17 +83,40 @@ born-digital PDF 는 PDF 객체를 직접 읽고, 스캔본은 OCR/CV 로 복원
 | 4 | PPTX 패키지 검증 실패 |
 | 5 | 시각 품질 임계값 미달 |
 | 6 | 원본 요소 누락 감지 |
-| 7 | PowerPoint 열기/저장/재개봉 실패 (미구현 — ROADMAP R4) |
+| 7 | PowerPoint 열기/저장/재개봉에서 내용 유실 |
 | 8 | 필수 렌더러/외부 의존성 없음 |
 
-`--allow-degraded` 는 시각·누락 실패만 완화한다. 패키지 검증 실패(4)와 렌더러 부재(8)는
-품질을 확인조차 못 한 상태이므로 완화되지 않는다. 완화된 결과는 보고서에
+`--allow-degraded` 는 시각·누락 실패만 완화한다. 패키지 검증 실패(4), PowerPoint
+호환성 실패(7), 렌더러 부재(8)는 완화되지 않는다 — 앞의 둘은 파일이 제대로 열리지
+않는다는 뜻이고, 마지막은 품질을 확인조차 못 한 상태다. 완화된 결과는 보고서에
 `"status": "degraded"` 로 남아 정상 통과(`pass`)와 구분된다.
+
+### PowerPoint 호환성 검증
+
+zip/XML 이 온전하고 python-pptx 로 열린다는 것이 **PowerPoint 가 복구 경고 없이 연다는
+뜻은 아니다.** 그래서 변환 후 PowerPoint 로 한 번 왕복시킨다.
+
+    원본 pptx  →  PowerPoint 로 열기  →  저장  →  닫기  →  저장본 다시 열기  →  내용 대조
+
+PowerPoint 가 복구했는지는 COM 으로 직접 알 수 없다(대화상자로만 알린다). 대신
+왕복 전후의 개체 수·그림 수·표 크기·글자를 대조한다. PowerPoint 가 무언가를 버렸거나
+고쳐 썼다면 여기서 드러난다. "열렸다"가 아니라 "열고 저장해도 내용이 그대로다"를
+확인하므로 복구 감지보다 오히려 강한 검사다.
+
+- 통과하면 `report.json` 에 `"powerpoint": {"status": "pass"}`
+- 내용이 달라지면 무엇이 어떻게 달라졌는지 사유와 함께 종료 코드 7
+- PowerPoint 가 없는 환경에서는 `"unavailable"` 로 남기고 실패시키지 않는다.
+  **다만 그 경우 PowerPoint 호환을 주장하지 않는다.**
+- `--no-ppt-check` 로 끌 수 있다 (느린 대신 확실한 검사라 기본은 켜짐)
+
+슬라이드 크기는 1pt 까지 허용 오차를 둔다. PowerPoint 가 내부 정밀도로 반올림해
+다시 쓰기 때문이다(실측 0.06pt 차이). 용지 자체가 바뀌면 이보다 훨씬 크게 벌어진다.
 
 ## 산출물 (work_<이름>/)
 - pages/pN.png, hires/pN.png : 200/400dpi 렌더링
 - ocr/pN.json                : Windows OCR 원본 (한국어) — OCR 경로에서만 생성
-- report.json                : 품질 지표와 pass/degraded/fail 판정
+- report.json                : 품질 지표와 pass/degraded/fail 판정, PowerPoint 왕복 결과
+- ppt_check/roundtrip.pptx   : PowerPoint 가 다시 저장한 사본 (대조용)
 - layout/pN.json             : 구조화 레이아웃 (text/rect/line/image + bbox, 색, 굵기, 정렬, 행간)
 - debug/pN_boxes.png         : 감지 결과 오버레이
 - overrides/pN.json          : 수동 교정 (delete / set / add) — OCR 오타, 병합 열 분리, 누락 요소 추가
@@ -127,7 +151,8 @@ AGPL 인 PyMuPDF 는 런타임 의존성이 아니며, 백엔드 대조가 필�
 
 ## 테스트
 
-    pytest                      # 전체 (65건, 수 초)
+    pytest                      # 전체 (81건)
+    pytest -m "not needs_powerpoint"   # PowerPoint 없는 환경
     pytest -m "not slow"        # OCR/렌더러가 필요 없는 것만
 
 핵심은 통과 사례가 아니라 **음성 대조군**이다. 고의로 망가뜨린 출력
@@ -163,7 +188,7 @@ OCR 줄을 셀에 배정한다. 셀 배경색·글자색·굵기·정렬·글자
 ## 사용
 - GUI: exe를 더블클릭 → PDF 선택 → 변환 시작
 - CLI: `PDF2PPTX.exe "파일.pdf" [--out 결과.pptx] [--pages 1,3] [--dpi 200] [--font "맑은 고딕"]
-        [--no-render] [--allow-degraded] [--no-native]`
+        [--no-render] [--allow-degraded] [--no-native] [--no-ppt-check]`
   품질 게이트를 통과하지 못하면 0이 아닌 종료 코드로 끝난다(위 표 참조).
 
 ## 배포본 구성 원칙

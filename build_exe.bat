@@ -10,7 +10,7 @@ python -m PyInstaller --noconfirm --clean --onefile --windowed ^
   --collect-data pptx ^
   --collect-all pypdfium2 ^
   --hidden-import pdfio --hidden-import tables --hidden-import extract --hidden-import build --hidden-import render ^
-  --hidden-import quality --hidden-import native ^
+  --hidden-import quality --hidden-import native --hidden-import ppt_validate ^
   --hidden-import win32com.client --hidden-import pythoncom ^
   --exclude-module pymupdf --exclude-module fitz ^
   --exclude-module matplotlib --exclude-module scipy --exclude-module pandas ^

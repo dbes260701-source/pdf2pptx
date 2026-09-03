@@ -3,7 +3,7 @@
 두 외부 평가서(→ [EVALUATION-RESPONSE.md](EVALUATION-RESPONSE.md))에서 나온 항목 중
 이번에 코드로 반영하지 않은 것들. 우선순위는 "충실도 점수를 실제로 움직이는가" 기준이다.
 
-기능 추가보다 **R1·R4 가 먼저**다. 평가서 [A] §16 의 결론과 같다:
+기능 추가보다 **R1·R4 가 먼저**였다. 평가서 [A] §16 의 결론과 같다:
 > 정확도 주장을 신뢰할 수 있게 만드는 일이, 기능을 하나 더 붙이는 일보다 가치가 크다.
 
 ---
@@ -99,20 +99,29 @@ OCR 경로는 원본 순서를 알 수 없으므로 여전히 타입 순서를 �
 
 ---
 
-## R4. PowerPoint COM 검증 게이트 ★★★★★
+## R4. PowerPoint COM 검증 게이트 ★★★★★ — **완료**
 
 **문제.** 현재 `quality.validate_package()` 는 zip/XML 구조와 python-pptx 재개봉만 본다.
 이것은 ECMA-376 적합성도, PowerPoint 가 복구 경고 없이 여는지도 증명하지 못한다.
 `render.py` 는 PowerPoint COM 을 쓰지만 **렌더링 목적**이고, 복구 경고를 감지하지 않는다.
 
-**방향.** Windows 에서 다음을 회귀에 편입한다.
+**상태.** `ppt_validate.py` 로 구현하고 게이트에 연결했다.
 
-1. PowerPoint 로 연다 → 복구 경고/열기 실패 감지
-2. 저장 → 닫기 → 다시 열기
-3. PowerPoint 로 PDF 내보내기 → **LibreOffice 가 아닌 PowerPoint 렌더**와 원본 비교
-4. 실패 시 종료 코드 7 (`EXIT_POWERPOINT`, 규약은 이미 `quality.py` 에 있고 아직 미사용)
+- [x] PowerPoint 로 열기 → 저장 → 닫기 → 저장본 다시 열기
+- [x] 왕복 전후 개체 수·그림·표·글자 대조로 유실 감지
+- [x] 실패 시 종료 코드 7, `--allow-degraded` 로도 완화되지 않음
+- [x] PowerPoint 가 없으면 `unavailable` 로 보고하고 실패시키지 않음
+- [x] 음성 대조군: 열 수 없는 파일과 슬라이드 XML 이 깨진 파일이 실제로 거부되는지
+- [x] 시각 비교는 이미 PowerPoint COM 렌더를 쓴다 (`render.py`, `renderer: "powerpoint"`)
 
-이 게이트가 회귀에 들어가기 전까지 **"PowerPoint 호환"이라고 표기하지 않는다.**
+**복구 경고 감지에 대해.** PowerPoint 가 파일을 복구했는지는 COM 으로 직접 알 수 없고
+대화상자로만 알린다. 자동화에서 그 대화상자를 신뢰성 있게 잡을 수 없어서,
+대화상자를 엿보는 대신 **왕복 후 내용 대조**로 바꿨다. PowerPoint 가 복구하면서
+무언가를 버렸다면 개체 목록이 달라지므로 결과적으로 잡힌다.
+
+**남은 것**: PowerPoint 로 PDF 를 내보내 원본 PDF 와 페이지 단위로 비교하는 경로.
+지금은 슬라이드 PNG 내보내기로 비교하고 있어 실무상 거의 같지만,
+PDF 경로가 글꼴 임베딩 문제를 더 잘 드러낼 수 있다.
 
 ---
 
@@ -193,6 +202,6 @@ profiles/corporate_report.yaml · meeting_deck.yaml · scanned_document.yaml
 - [x] 품질 미달이 0이 아닌 종료 코드로 끝남
 - [x] 품질 미달과 정상 통과가 보고서에서 구분됨 (`pass` / `degraded` / `fail`)
 - [ ] 사내 문서 30~50건 코퍼스의 분류별 결과 기록 (`tests/corpus/`)
-- [ ] PowerPoint 가 복구 경고 없이 열고, 저장·재개봉·내보내기까지 통과 (**R4**)
+- [x] PowerPoint 가 열고 저장·재개봉해도 내용이 보존됨 (**R4**)
 - [x] born-digital 문서에서 네이티브 경로가 동작 (**R1**)
 - [~] 원본 임베디드 이미지가 재인코딩 없이 보존 — JPEG 만 (**R3**)

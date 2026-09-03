@@ -36,7 +36,8 @@ pdf2pptx = "app:main_cli"
 
 [tool.setuptools]
 # 최상위 평면 모듈 구조. src/ 레이아웃 이전은 docs/ROADMAP.md 의 R8 항목.
-py-modules = ["app", "run", "extract", "build", "render", "quality", "pdfio", "tables", "analyze"]
+py-modules = ["app", "run", "extract", "build", "render", "quality", "pdfio",
+              "native", "ppt_validate", "tables", "analyze"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -44,4 +45,5 @@ markers = [
     "slow: OCR/렌더링이 필요해 느린 테스트",
     "needs_renderer: PowerPoint 또는 LibreOffice 가 있어야 하는 테스트",
     "needs_ocr: 한국어 Windows OCR 언어 팩이 있어야 하는 테스트",
+    "needs_powerpoint: Microsoft PowerPoint COM 이 있어야 하는 테스트",
 ]

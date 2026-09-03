@@ -3,7 +3,7 @@ run.py -- one-shot pipeline:  PDF -> layout -> (overrides) -> PPTX -> PowerPoint
 usage:
   python run.py <pdf> [--work <dir>] [--out <pptx>] [--pages 1,3] [--font NanumGothic]
                       [--no-extract] [--no-render] [--allow-degraded]
-                      [--no-native] [--no-tables]
+                      [--no-native] [--no-tables] [--no-ppt-check]
 Steps:
   1. extract.py  (render, Windows OCR, text/line/rect/photo/image detection)  -> work/layout/pN.json + work/debug/pN_boxes.png
   2. build.py    (layout + work/overrides/pN.json -> pptx)
@@ -46,6 +46,7 @@ if "--no-render" in sys.argv:
 # 게이트 결과를 그대로 종료 코드로 전달한다 (여기서 sys.exit 하지 않으면 fail-open 이 된다)
 rc = run([sys.executable, os.path.join(HERE, "render.py"), out, work]
          + (["--pages", pages] if pages else [])
-         + (["--allow-degraded"] if "--allow-degraded" in sys.argv else []), check=False)
+         + (["--allow-degraded"] if "--allow-degraded" in sys.argv else [])
+         + (["--no-ppt-check"] if "--no-ppt-check" in sys.argv else []), check=False)
 print(("done: " if rc == 0 else f"품질 게이트 실패(코드 {rc}): ") + out)
 sys.exit(rc)

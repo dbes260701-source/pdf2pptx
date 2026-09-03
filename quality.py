@@ -145,6 +145,13 @@ def evaluate(report, th=None, allow_degraded=False):
     if report.get("package_error"):
         fails.append((EXIT_PACKAGE, f"PPTX 패키지 검증 실패: {report['package_error']}"))
 
+    # PowerPoint 왕복(열기->저장->재개봉)에서 내용이 바뀌면 호환 문제다.
+    # PowerPoint 가 없는 환경은 unavailable/skipped 로 실패시키지 않는다.
+    pw = report.get("powerpoint") or {}
+    if pw.get("status") == "fail":
+        why = pw.get("error") or "; ".join(pw.get("differences", [])) or "알 수 없음"
+        fails.append((EXIT_POWERPOINT, f"PowerPoint 왕복 검증 실패: {why}"))
+
     # 렌더러가 없을 때의 슬라이드 수는 "0장 생성"이 아니라 "측정 불가"다.
     if not no_renderer:
         gap = report.get("page_count", 0) - report.get("slide_count", 0)
@@ -173,7 +180,7 @@ def evaluate(report, th=None, allow_degraded=False):
         report["status"] = "pass"
         return EXIT_OK, []
     # 의존성/패키지 실패는 degraded 모드로도 봐주지 않는다.
-    hard = [f for f in fails if f[0] in (EXIT_PACKAGE, EXIT_RENDERER)]
+    hard = [f for f in fails if f[0] in (EXIT_PACKAGE, EXIT_RENDERER, EXIT_POWERPOINT)]
     if allow_degraded and not hard:
         report["status"] = "degraded"
         return EXIT_OK, [m for _, m in fails]
@@ -212,7 +219,9 @@ def write_report(work, report):
 
 
 def summary(report):
-    lines = [f"품질 판정: {report.get('status', '?')}  (렌더러: {report.get('renderer') or '없음'})"]
+    pw = (report.get("powerpoint") or {}).get("status", "?")
+    lines = [f"품질 판정: {report.get('status', '?')}  "
+             f"(렌더러: {report.get('renderer') or '없음'}, PowerPoint 왕복: {pw})"]
     for p in report.get("pages", []):
         lines.append(f"  {p['page']}쪽  SSIM {p.get('ssim')}  최악타일 {p.get('worst_tile_ssim')}"
                      f"  MAE {p.get('mae')}  텍스트복원율 {p.get('text_coverage')}")
